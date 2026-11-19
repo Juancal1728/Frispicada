@@ -520,60 +520,94 @@ html,body{overflow-x:clip}
 @media (max-width:760px){.tk div i svg{width:22px;height:22px}.tk .rider{top:8px;width:30px;height:30px}.mapbox .lbl{font-size:11.5px}}
 @media (prefers-reduced-motion:reduce){.mapbox .st::before,.eta i{animation:none}}
 
-/* ===== v6: barra lateral y pitch interactivo ===== */
-.sb{position:fixed;left:0;top:0;bottom:0;z-index:85;width:84px;background:var(--line);color:#FFFDF8;display:flex;flex-direction:column;padding:16px 12px;gap:4px;transition:width .35s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1);overflow:hidden;box-shadow:12px 0 30px -20px rgba(0,0,0,.6)}
-.sb:hover,.sb:focus-within,.sb.open{width:286px}
-.sb .brand{display:flex;align-items:center;gap:12px;padding:4px 6px 14px;min-height:56px}
-.sb .brand img{width:48px;flex:none}
-.sb .brand span{font-weight:900;font-size:16px;line-height:1.1;white-space:nowrap;opacity:0;transition:opacity .2s}
-.sb .brand small{display:block;color:var(--fy);font-size:12px;font-weight:800}
-.sb .grp{font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#9C8C83;padding:12px 10px 6px;white-space:nowrap;opacity:0;transition:opacity .2s;height:30px}
-.sb a.it{position:relative;display:flex;align-items:center;gap:14px;padding:9px 10px;border-radius:14px;color:#E9DCD3;text-decoration:none;font-weight:800;font-size:14.5px;white-space:nowrap;min-height:46px}
-.sb a.it .ic{width:40px;height:40px;flex:none;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.06);font-weight:900;font-size:13px;color:var(--fy);font-variant-numeric:tabular-nums}
+/* ===== v7: barra lateral limpia y propuesta en formato landing ===== */
+:root{--sb-w:268px;--sb-c:76px;--sb-bg:#FFFDF9;--sb-line:#EBE1D5;--sb-ink:#2A1F1C;--sb-mut:#8A776C;--sb-hov:#F6EEE4;--sb-act:#FBEFD2}
+.sb{position:fixed;left:0;top:0;bottom:0;z-index:85;width:var(--sb-w);background:var(--sb-bg);border-right:1px solid var(--sb-line);display:flex;flex-direction:column;padding:max(14px,env(safe-area-inset-top,0px)) 12px max(14px,env(safe-area-inset-bottom,0px));transition:width .3s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.sb .hd{display:flex;align-items:center;gap:10px;padding:2px 4px 14px;border-bottom:1px solid var(--sb-line);margin-bottom:10px;min-height:58px}
+.sb .hd .lg{width:40px;height:40px;flex:none;border-radius:12px;background:var(--fr);display:grid;place-items:center;box-shadow:0 6px 14px -8px rgba(120,20,20,.8)}
+.sb .hd .lg img{width:32px}
+.sb .hd .nm{min-width:0;line-height:1.15;white-space:nowrap;overflow:hidden}.sb .hd .nm small{display:block;overflow:hidden;text-overflow:ellipsis}
+.sb .hd .nm b{display:block;font-size:14.5px;font-weight:900;color:var(--sb-ink)}
+.sb .hd .nm small{font-size:12px;font-weight:700;color:var(--sb-mut)}
+.sb .cl{margin-left:auto;width:32px;height:32px;flex:none;border-radius:9px;display:grid;place-items:center;color:var(--sb-mut)}
+.sb .cl:hover{background:var(--sb-hov);color:var(--sb-ink)}
+.sb .cl svg{width:18px;height:18px;transition:transform .3s}
+.sb .scroll{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;margin:0 -4px;padding:0 4px}
+.sb .scroll::-webkit-scrollbar{display:none}
+.sb .gl{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--sb-mut);padding:14px 10px 8px;white-space:nowrap}
+.sb a.it{position:relative;display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:11px;color:var(--sb-ink);text-decoration:none;font-weight:800;font-size:14px;white-space:nowrap;min-height:42px;transition:background .15s}
+.sb a.it:hover{background:var(--sb-hov)}
+.sb a.it .ic{width:24px;height:24px;flex:none;display:grid;place-items:center;color:var(--sb-mut)}
 .sb a.it .ic svg{width:20px;height:20px}
-.sb .play .lb{opacity:0;transition:opacity .2s}
-.sb a.it .lb{opacity:0;transition:opacity .2s;display:flex;flex-direction:column;line-height:1.15}
-.sb a.it .lb small{font-size:11.5px;color:#9C8C83;font-weight:700}
-.sb a.it:hover{background:rgba(255,255,255,.07)}
-.sb a.it.on{background:rgba(242,185,30,.14);color:#fff}
-.sb a.it.on .ic{background:var(--fy);color:var(--line)}
-.sb a.it.on::before{content:"";position:absolute;left:-12px;top:10px;bottom:10px;width:4px;border-radius:0 4px 4px 0;background:var(--fy)}
-.sb:hover .play .lb,.sb:focus-within .play .lb,.sb.open .play .lb,.sb:hover .brand span,.sb:focus-within .brand span,.sb.open .brand span,.sb:hover .lb,.sb:focus-within .lb,.sb.open .lb,.sb:hover .grp,.sb:focus-within .grp,.sb.open .grp{opacity:1}
-.sb .foot2{margin-top:auto;display:grid;gap:8px}
-.sb .play{display:flex;align-items:center;gap:12px;background:var(--fy);color:var(--line);border-radius:14px;padding:8px 10px;font-weight:900;white-space:nowrap;min-height:48px}
-.sb .play .ic{width:32px;height:32px;flex:none;border-radius:10px;background:var(--line);color:var(--fy);display:grid;place-items:center}
-.sb .play .ic svg{width:16px;height:16px}
-.sb .tmr{font-variant-numeric:tabular-nums;font-weight:900;text-align:center;color:#9C8C83;font-size:13px;white-space:nowrap}
-.sb .tmr.run{color:var(--fy)}.sb .tmr.late{color:#FF7A6B}
-.sbtn{display:none;width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.18);color:#fff;place-items:center;flex:none}
+.sb a.it.on{background:var(--sb-act)}
+.sb a.it.on .ic{color:var(--fr)}
+.sb .steps2{position:relative;margin-left:2px}
+.sb .steps2::before{content:"";position:absolute;left:21px;top:22px;bottom:22px;width:2px;background:var(--sb-line);border-radius:2px}
+.sb .steps2 .fill{position:absolute;left:21px;top:22px;width:2px;height:0;background:var(--fr);border-radius:2px;transition:height .35s cubic-bezier(.2,.8,.2,1)}
+.sb .steps2 a.it .ic{position:relative;z-index:1}
+.sb .steps2 a.it .dot{width:22px;height:22px;border-radius:50%;background:var(--sb-bg);border:2px solid var(--sb-line);display:grid;place-items:center;font-size:10.5px;font-weight:900;color:var(--sb-mut);font-variant-numeric:tabular-nums;transition:.25s}
+.sb .steps2 a.it.done .dot{background:var(--fr);border-color:var(--fr);color:#fff}
+.sb .steps2 a.it.on .dot{background:var(--fy);border-color:var(--fr);color:var(--line);transform:scale(1.12)}
+.sb .lb2{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.sb .lb2 small{font-size:11.5px;font-weight:700;color:var(--sb-mut)}
+.sb .ft{border-top:1px solid var(--sb-line);padding-top:12px;margin-top:8px}
+.sb .ask2{display:flex;align-items:center;gap:12px;background:var(--line);color:#FFFDF8;border-radius:14px;padding:10px 12px;text-decoration:none;white-space:nowrap;min-height:52px}
+.sb .ask2 .ic{width:28px;height:28px;flex:none;border-radius:8px;background:var(--fy);color:var(--line);display:grid;place-items:center}
+.sb .ask2 .ic svg{width:16px;height:16px}
+.sb .ask2 b{display:block;font-size:13.5px;font-weight:900}
+.sb .ask2 small{display:block;font-size:11.5px;color:#CDBFB5;font-weight:700}
+/* contraída (escritorio) */
+.sb.mini{width:var(--sb-c)}
+.sb.mini .nm,.sb.mini .gl,.sb.mini .lb2,.sb.mini .ask2>span:last-child{opacity:0;pointer-events:none}
+.sb.mini .cl svg{transform:rotate(180deg)}
+.sb.mini .hd{flex-direction:column;gap:8px;min-height:96px}.sb.mini .cl{margin:0}
+.sb.mini .gl{height:10px;padding:6px 0;overflow:hidden}
+.sb.mini .ask2{padding:10px 0;justify-content:center}.sb.mini .ask2>span:last-child{display:none}
+.sb .nm,.sb .gl,.sb .lb2,.sb .ask2>span:last-child{transition:opacity .15s}
+.sbtn{display:none;width:44px;height:44px;border-radius:12px;background:rgba(0,0,0,.18);color:#fff;place-items:center;flex:none}
 .sbtn svg{width:22px;height:22px}
-.sbbd{position:fixed;inset:0;background:rgba(28,21,20,.5);z-index:84;opacity:0;visibility:hidden;transition:.3s}
-@media (min-width:1101px){body{padding-left:84px}.fab{right:max(18px,env(safe-area-inset-right,0px))}}
+.sbbd{position:fixed;inset:0;background:rgba(28,21,20,.45);z-index:84;opacity:0;visibility:hidden;transition:.3s}
+@media (min-width:1101px){body{padding-left:var(--sb-w);transition:padding-left .3s cubic-bezier(.2,.8,.2,1)}body.sbmini{padding-left:var(--sb-c)}}
 @media (max-width:1100px){
-  .sb{width:300px;transform:translateX(-105%)}
+  .sb{transform:translateX(-105%);box-shadow:20px 0 40px -20px rgba(0,0,0,.35)}
   .sb.open{transform:none}
-  .sb .brand span,.sb a.it .lb,.sb .play .lb,.sb .grp{opacity:1}
+  .sb .cl{display:none}
   .sbbd.on{opacity:1;visibility:visible}
   .sbtn{display:grid}
   .top .sbtn{order:-1;margin-right:-6px}
 }
-/* pitch */
-.deck{display:none;min-height:100vh;min-height:100svh;background:var(--bg)}
-body.dk .hero,body.dk .promo,body.dk .marq,body.dk #arma,body.dk main,body.dk footer.foot,body.dk .fab,body.dk .mbar,body.dk .prog{display:none!important}
+/* vista de la propuesta */
+.deck{display:none;background:var(--bg)}
+body.dk .hero,body.dk .promo,body.dk .marq,body.dk #arma,body.dk main,body.dk footer.foot,body.dk .fab,body.dk .mbar{display:none!important}
 body.dk .deck{display:block}
-.dtopb{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:12px max(20px,env(safe-area-inset-left,0px));background:rgba(248,243,236,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid rgba(59,29,20,.08)}
-.dtopb .sbtn{background:var(--line)}
-.dtopb .dt{font-weight:900;font-size:15px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dtopb .dt small{color:var(--muted);font-weight:800;margin-right:8px}
-.dtopb .sp{margin-left:auto;display:flex;gap:8px;align-items:center}
-.dtopb .tb{height:40px;min-width:40px;padding:0 12px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(59,29,20,.12);font-weight:900;font-size:13.5px;display:inline-flex;align-items:center;gap:6px;color:var(--ink)}
-.dtopb .tb svg{width:18px;height:18px}
-.dtopb .tb.on{background:var(--line);color:var(--fy)}
-.dtopb .tmr2{font-variant-numeric:tabular-nums}
-.dprog{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:transparent}
-.dprog i{display:block;height:100%;background:var(--fr);transform-origin:0 50%;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.slide{display:none;max-width:1240px;margin:0 auto;padding:26px max(20px,env(safe-area-inset-left,0px)) 110px}
-.slide.on{display:block}
+.mbar2{display:none}
+@media (max-width:1100px){.mbar2{display:flex;position:sticky;top:env(safe-area-inset-top,0px);z-index:20;align-items:center;gap:10px;padding:10px max(16px,env(safe-area-inset-left,0px));background:rgba(248,243,236,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--sb-line)}
+  .mbar2 .sbtn{background:var(--line)}
+  .mbar2 b{font-weight:900;font-size:15px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.phero{background:var(--line);color:#FFFDF8;position:relative;overflow:hidden}
+.phero::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 90% 10%,rgba(158,27,34,.75),transparent 70%),radial-gradient(600px 400px at 0% 100%,rgba(242,185,30,.18),transparent 70%)}
+.phero .in2{position:relative;max-width:1180px;margin:0 auto;padding-block:56px 46px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:30px;align-items:center}
+.phero .ey{font-weight:900;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--fy)}
+.phero h1{font-weight:900;font-size:clamp(38px,5.6vw,72px);line-height:.95;margin-top:12px;text-wrap:balance}
+.phero h1 span{color:var(--fy)}
+.phero .ld{font-weight:700;font-size:clamp(17px,1.8vw,21px);color:#E9DCD3;margin-top:16px;max-width:52ch}
+.phero .ld b{color:#fff}
+.phero .bt{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.phero .bt a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;font-weight:900;text-decoration:none}
+.phero .bt a.p1{background:var(--fy);color:var(--line)}.phero .bt a.p2{color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.4)}
+.phero img{width:100%;max-width:420px;justify-self:center;filter:drop-shadow(0 30px 30px rgba(0,0,0,.45))}
+.pidx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:1180px;margin:-26px auto 0;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));position:relative;z-index:2}
+.pidx a{background:var(--panel);border-radius:18px;padding:14px 16px;box-shadow:var(--sh);text-decoration:none;color:var(--ink);display:grid;gap:4px;transition:transform .2s}
+.pidx a:hover{transform:translateY(-3px)}
+.pidx a small{font-weight:900;color:var(--fr);font-size:12px;letter-spacing:.08em}
+.pidx a b{font-weight:900;font-size:15px;line-height:1.15}
+.pidx a.ask3{background:var(--fr);color:#fff}.pidx a.ask3 small{color:var(--fy)}
+@media (max-width:900px){.phero .in2{grid-template-columns:1fr}.phero img{max-width:280px}.pidx{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.slide{display:block;max-width:1240px;margin:0 auto;padding-block:64px 24px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));scroll-margin-top:70px}
+.slide+.slide{border-top:1px solid var(--sb-line)}
+.pend{max-width:1240px;margin:0 auto;padding-block:20px 80px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));color:var(--muted);font-weight:700;font-size:13.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pend a{color:var(--fr);font-weight:900}
+
 .sh{display:grid;grid-template-columns:1fr auto;gap:14px 24px;align-items:end}
 .sh .num{font-weight:900;color:var(--fr);font-size:14px;letter-spacing:.12em;text-transform:uppercase}
 .sh h2{font-weight:900;font-size:clamp(30px,4.4vw,56px);line-height:.98;margin-top:6px;text-wrap:balance}
@@ -730,8 +764,8 @@ body.dk .deck{display:block}
 .sim input[type=range]{width:100%;accent-color:var(--fr);margin-top:8px;height:28px}
 .sim .ticks{display:flex;justify-content:space-between;font-size:11.5px;font-weight:800;color:var(--muted)}
 .sim .out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
-.sim .out div{background:var(--soft);border-radius:16px;padding:12px 6px;text-align:center;min-width:0}
-.sim .out b{display:block;font-weight:900;font-size:clamp(15px,4.2vw,22px);white-space:nowrap;font-variant-numeric:tabular-nums;line-height:1.1}
+.sim .out div{background:var(--soft);border-radius:16px;padding:12px;text-align:center}
+.sim .out b{display:block;font-weight:900;font-size:22px;font-variant-numeric:tabular-nums;line-height:1.1}
 .sim .out small{font-weight:800;color:var(--muted);font-size:12px}
 .sim .gauge{position:relative;height:16px;border-radius:9px;background:linear-gradient(90deg,#F4E1DE 0,#F4E1DE var(--be),#E2ECDC var(--be));margin-top:16px}
 .sim .gauge i{position:absolute;top:-6px;width:4px;height:28px;border-radius:2px;background:var(--line);transition:left .3s;transform:translateX(-50%)}
@@ -746,38 +780,32 @@ body.dk .deck{display:block}
 .ask .gate b{color:var(--fy);display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
 .ask .gate p{font-weight:800}
 @media (max-width:900px){.ask{grid-template-columns:1fr}}
-/* notas y navegación */
-.notes{position:fixed;left:50%;bottom:78px;transform:translate(-50%,20px);width:min(720px,calc(100% - 32px));background:var(--line);color:#FFFDF8;border-radius:20px;padding:16px 18px;box-shadow:0 24px 40px -18px rgba(0,0,0,.6);z-index:30;opacity:0;visibility:hidden;transition:.3s}
-.notes.on{opacity:1;visibility:visible;transform:translate(-50%,0)}
-.notes b{color:var(--fy);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-.notes p{font-weight:700;margin-top:6px;line-height:1.45}
-.dnav{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:8px;align-items:center;background:var(--line);padding:6px;border-radius:18px;box-shadow:0 16px 30px -14px rgba(0,0,0,.55)}
-.dnav button{width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center}
-.dnav button svg{width:20px;height:20px}
-.dnav span{color:#CDBFB5;font-weight:900;font-size:13px;min-width:50px;text-align:center;font-variant-numeric:tabular-nums}
-.dnav button.nx{background:var(--fy);color:var(--line)}
-body.pres .dtopb{background:rgba(248,243,236,.96)}
-@media (prefers-reduced-motion:reduce){.sb,.notes,.sbbd{transition:none}}
+@media (prefers-reduced-motion:reduce){.sb,.sbbd,.sb .steps2 .fill{transition:none}}
+
 
 .sheet{z-index:90}.toast{z-index:96}
 </style>
 </head>
 <body>
 <aside class="sb" id="sb" aria-label="Navegación del proyecto">
-  <div class="brand"><img id="sbLogo" alt=""><span>Frisby México<small>Proyecto final · Marketing Internacional</small></span></div>
-  <a class="it" href="#/inicio" data-r="inicio"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4v-9Z"/></svg></span><span class="lb">Menú Frispicada<small>La página del producto</small></span></a>
-  <div class="grp">Pitch a la junta · 7 min</div>
-  <a class="it" href="#/s1" data-r="s1"><span class="ic">01</span><span class="lb">Preparación<small>¿Estamos listos?</small></span></a>
-  <a class="it" href="#/s2" data-r="s2"><span class="ic">02</span><span class="lb">Mercado<small>¿Por qué México?</small></span></a>
-  <a class="it" href="#/s3" data-r="s3"><span class="ic">03</span><span class="lb">Entrada<small>¿Cómo entramos?</small></span></a>
-  <a class="it" href="#/s4" data-r="s4"><span class="ic">04</span><span class="lb">Propuesta de valor<small>¿Para quién y qué resuelve?</small></span></a>
-  <a class="it" href="#/s5" data-r="s5"><span class="ic">05</span><span class="lb">Marketing mix<small>Estandarizar o adaptar</small></span></a>
-  <a class="it" href="#/s6" data-r="s6"><span class="ic">06</span><span class="lb">Ventaja competitiva<small>¿Por qué nos eligen?</small></span></a>
-  <a class="it" href="#/s7" data-r="s7"><span class="ic">07</span><span class="lb">Riesgos y finanzas<small>¿Por qué invertir?</small></span></a>
-  <div class="foot2">
-    <button class="play" type="button" id="playBtn"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg></span><span class="lb">Presentar (7:00)</span></button>
-    <div class="tmr" id="sbTmr">7:00</div>
-  </div>
+  <div class="hd"><span class="lg"><img id="sbLogo" alt=""></span><span class="nm"><b>Frispicada México</b><small>Proyecto de internacionalización</small></span>
+    <button class="cl" type="button" id="sbMini" aria-label="Contraer la barra lateral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button></div>
+  <nav class="scroll">
+    <div class="gl">Producto</div>
+    <a class="it" href="#inicio" data-r="inicio"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4v-9Z"/></svg></span><span class="lb2">Menú Frispicada<small>Carta, combos y pedidos</small></span></a>
+    <a class="it" href="#pitch" data-r="pitch"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span class="lb2">Resumen de la propuesta<small>Lo que pedimos a la junta</small></span></a>
+    <div class="gl">Propuesta a la junta</div>
+    <div class="steps2"><span class="fill" id="sbFill"></span>
+      <a class="it" href="#p-preparacion" data-r="p-preparacion"><span class="ic"><span class="dot">1</span></span><span class="lb2">Preparación<small>¿Estamos listos?</small></span></a>
+      <a class="it" href="#p-mercado" data-r="p-mercado"><span class="ic"><span class="dot">2</span></span><span class="lb2">Mercado<small>¿Por qué México?</small></span></a>
+      <a class="it" href="#p-entrada" data-r="p-entrada"><span class="ic"><span class="dot">3</span></span><span class="lb2">Entrada<small>¿Cómo entramos?</small></span></a>
+      <a class="it" href="#p-valor" data-r="p-valor"><span class="ic"><span class="dot">4</span></span><span class="lb2">Propuesta de valor<small>¿Para quién?</small></span></a>
+      <a class="it" href="#p-mix" data-r="p-mix"><span class="ic"><span class="dot">5</span></span><span class="lb2">Marketing mix<small>Estandarizar o adaptar</small></span></a>
+      <a class="it" href="#p-ventaja" data-r="p-ventaja"><span class="ic"><span class="dot">6</span></span><span class="lb2">Ventaja competitiva<small>¿Por qué nos eligen?</small></span></a>
+      <a class="it" href="#p-finanzas" data-r="p-finanzas"><span class="ic"><span class="dot">7</span></span><span class="lb2">Riesgos y finanzas<small>¿Por qué invertir?</small></span></a>
+    </div>
+  </nav>
+  <div class="ft"><a class="ask2" href="#p-finanzas" data-ask><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><span><b>La decisión</b><small>Aprobar la fase 1 en México</small></span></a></div>
 </aside>
 <div class="sbbd" id="sbbd"></div>
 
@@ -1007,20 +1035,27 @@ body.pres .dtopb{background:rgba(248,243,236,.96)}
     <p class="legal">Imágenes de carácter ilustrativo. Promoción de lanzamiento válida durante las primeras 4 semanas de apertura, hasta agotar existencias. Frisby® es una marca de Frisby S.A. BIC. Aviso de privacidad conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. Proyecto académico de Marketing Internacional.</p>
   </div>
 </footer>
-<section class="deck" id="deck" aria-label="Presentación ejecutiva">
-  <div class="dtopb">
-    <button class="sbtn" type="button" data-sb aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
-    <div class="dt" id="dTitle"></div>
-    <div class="sp">
-      <button class="tb" type="button" id="notesBtn" aria-pressed="false" title="Notas del orador (N)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>Notas</button>
-      <button class="tb tmr2" type="button" id="tmrBtn" title="Cronómetro de 7 minutos (T)">7:00</button>
-      <button class="tb" type="button" id="fsBtn" aria-label="Pantalla completa (F)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
-    </div>
-    <div class="dprog"><i id="dprog"></i></div>
-  </div>
-
-  <!-- 1 -->
-  <article class="slide" id="s1" data-t="Preparación de la empresa">
+<section class="deck" id="deck" aria-label="Propuesta a la junta directiva">
+  <div class="mbar2"><button class="sbtn" type="button" data-sb aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button><b id="mTitle">Propuesta a la junta</b></div>
+  <header class="phero" id="pitch-top"><div class="in2">
+    <div><p class="ey">Propuesta a la junta directiva de Frisby S.A. BIC</p>
+      <h1>Llevemos la Frispicada a <span>Ciudad de México</span></h1>
+      <p class="ld">Pedimos aprobar <b>MXN 8,5 millones</b> para entrar a México con un joint venture 60/40: una tienda piloto y dos cocinas de entrega. A los 12 meses, la tienda debe superar <b>100 pedidos diarios</b> y un <b>margen EBITDA de 12 %</b> para pasar a franquicia.</p>
+      <div class="bt"><a class="p1" href="#p-preparacion">Recorrer la propuesta</a><a class="p2" href="#p-finanzas">Ir a la decisión</a></div></div>
+    <img id="phImg" alt="Combo Familiar de la Frispicada">
+  </div></header>
+  <nav class="pidx" aria-label="Las siete preguntas">
+    <a href="#p-preparacion"><small>1 · Preparación</small><b>¿Por qué estamos listos?</b></a>
+    <a href="#p-mercado"><small>2 · Mercado</small><b>¿Por qué México?</b></a>
+    <a href="#p-entrada"><small>3 · Entrada</small><b>¿Cómo entramos?</b></a>
+    <a href="#p-valor"><small>4 · Propuesta de valor</small><b>¿Para quién y qué resuelve?</b></a>
+    <a href="#p-mix"><small>5 · Marketing mix</small><b>¿Qué se adapta?</b></a>
+    <a href="#p-ventaja"><small>6 · Ventaja</small><b>¿Por qué nos eligen?</b></a>
+    <a href="#p-finanzas"><small>7 · Riesgos y finanzas</small><b>¿Qué puede salir mal?</b></a>
+    <a class="ask3" href="#p-finanzas"><small>La decisión</small><b>¿Por qué invertir?</b></a>
+  </nav>
+<!-- 1 -->
+  <article class="slide" id="p-preparacion" data-t="Preparación de la empresa">
     <header class="sh"><div><p class="num">01 · Company readiness</p><h2>Frisby ya ganó Colombia; el siguiente paso es afuera</h2><p class="q">¿Por qué la empresa está preparada para ingresar a un mercado internacional?</p></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Diagnóstico y preparación</span></div></header>
     <div class="g4" data-a>
@@ -1038,7 +1073,7 @@ body.pres .dtopb{background:rgba(248,243,236,.96)}
   </article>
 
   <!-- 2 -->
-  <article class="slide" id="s2" data-t="Selección del mercado">
+  <article class="slide" id="p-mercado" data-t="Selección del mercado">
     <header class="sh"><div><p class="num">02 · Market selection</p><h2>México: el mejor puntaje de cinco mercados</h2><p class="q">¿Por qué seleccionamos este país? ¿Qué evidencias respaldan la decisión?</p></div>
       <div class="rub"><span class="chipr">Rúbrica <b>15 %</b> Mercado, PESTEL, cultura y Porter</span></div></header>
     <div class="tabs2" role="tablist" data-tabs="m">
@@ -1058,7 +1093,7 @@ body.pres .dtopb{background:rgba(248,243,236,.96)}
   </article>
 
   <!-- 3 -->
-  <article class="slide" id="s3" data-t="Estrategia de entrada">
+  <article class="slide" id="p-entrada" data-t="Estrategia de entrada">
     <header class="sh"><div><p class="num">03 · Entry strategy</p><h2>Joint venture 60/40, por fases</h2><p class="q">¿Cómo ingresar a este mercado? ¿Por qué esta es la mejor opción?</p></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Estrategia de entrada</span></div></header>
     <div class="mods" id="mods"></div>
@@ -1071,7 +1106,7 @@ body.pres .dtopb{background:rgba(248,243,236,.96)}
   </article>
 
   <!-- 4 -->
-  <article class="slide" id="s4" data-t="Propuesta de valor local">
+  <article class="slide" id="p-valor" data-t="Propuesta de valor local">
     <header class="sh"><div><p class="num">04 · Local value proposition</p><h2>¿Quién trae la Frispicada?</h2><p class="q">¿Quién es el cliente objetivo? ¿Qué necesidad o problema resolvemos?</p></div>
       <div class="rub"><span class="chipr">Base de <b>Mix</b> y <b>Océano azul</b></span></div></header>
     <div class="g2">
@@ -1087,7 +1122,7 @@ body.pres .dtopb{background:rgba(248,243,236,.96)}
   </article>
 
   <!-- 5 -->
-  <article class="slide" id="s5" data-t="Marketing mix">
+  <article class="slide" id="p-mix" data-t="Marketing mix">
     <header class="sh"><div><p class="num">05 · Marketing mix</p><h2>Se mantiene la receta, se adapta la mesa</h2><p class="q">¿Qué elementos están estandarizados, adaptados o combinados? ¿Por qué?</p></div>
       <div class="rub"><span class="chipr">Rúbrica <b>15 %</b> Mix y adaptación</span><span class="chipr">Rúbrica <b>15 %</b> Precios y viabilidad</span></div></header>
     <div class="tabs2" id="mixTabs"></div>
@@ -1100,7 +1135,7 @@ body.pres .dtopb{background:rgba(248,243,236,.96)}
   </article>
 
   <!-- 6 -->
-  <article class="slide" id="s6" data-t="Ventaja competitiva">
+  <article class="slide" id="p-ventaja" data-t="Ventaja competitiva">
     <header class="sh"><div><p class="num">06 · Competitive advantage</p><h2>Un espacio propio: la botana de pollo para el grupo</h2><p class="q">¿Por qué los clientes deberían elegirnos frente a competidores locales e internacionales?</p></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Ventaja y Océano azul</span></div></header>
     <div class="g2">
@@ -1115,7 +1150,7 @@ body.pres .dtopb{background:rgba(248,243,236,.96)}
   </article>
 
   <!-- 7 -->
-  <article class="slide" id="s7" data-t="Riesgos y viabilidad financiera">
+  <article class="slide" id="p-finanzas" data-t="Riesgos y viabilidad financiera">
     <header class="sh"><div><p class="num">07 · Risk and financial viability</p><h2>Riesgo acotado, números que cierran</h2><p class="q">¿Qué podría salir mal? ¿Cómo gestionarlo? ¿Cómo medir el éxito?</p></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Riesgos, plan y KPI</span><span class="chipr">Rúbrica <b>15 %</b> Viabilidad financiera</span></div></header>
     <div class="tabs2" data-tabs="r"><button class="on" data-p="r1">Simulador</button><button data-p="r2">Mapa de riesgos</button><button data-p="r3">KPI</button></div>
@@ -1140,8 +1175,8 @@ body.pres .dtopb{background:rgba(248,243,236,.96)}
       <div class="gate"><b>Lo que pedimos a la junta</b><p>Aprobar la fase 1. A los 12 meses solo se pasa a franquicia si la tienda supera 100 tickets diarios y un margen EBITDA de 12 %.</p></div></div>
   </article>
 
-  <div class="notes" id="notes" role="note"><b>Notas del orador</b><p id="notesT"></p></div>
-  <div class="dnav"><button type="button" id="dPrev" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><span id="dCount">1 / 7</span><button class="nx" type="button" id="dNext" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+  
+  <footer class="pend"><span>Frisby en México · Marketing Internacional, Universidad Icesi · Cifras del informe final, noviembre de 2026.</span><a href="#inicio">Volver al menú Frispicada</a></footer>
 </section>
 
 <a class="fab" href="#pedir" data-order><span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></span>Pedir</a>
@@ -1403,13 +1438,13 @@ if(RM){tk.forEach(d=>d.classList.add('on'));tl.style.transform='scaleX(1)'}
 else new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting&&!ti)runTrack()}),{threshold:.4}).observe($('#track2'));
 })();
 
-// ===== v6: barra lateral, rutas y pitch interactivo =====
+// ===== v7: barra lateral y propuesta en formato landing =====
 (()=>{
 const M=window.Motion,RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];
 const nf=(v,d=0)=>v.toLocaleString('es-CO',{minimumFractionDigits:d,maximumFractionDigits:d});
 const money=v=>'$'+nf(Math.round(v));
-q('#sbLogo').src=IMG.logo;q('#s4img').src=IMG['combo-familiar'];
+q('#sbLogo').src=IMG.logo;q('#s4img').src=IMG['combo-familiar'];q('#phImg').src=IMG['combo-familiar'];
 const sb=q('#sb'),bd=q('#sbbd');
 const openSb=o=>{sb.classList.toggle('open',o);bd.classList.toggle('on',o)};
 document.addEventListener('click',e=>{if(e.target.closest('[data-sb]')){openSb(!sb.classList.contains('open'))}});
@@ -1464,7 +1499,7 @@ q('#chSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!
 // ---------- slide 6: curva de valor
 const AT=['Precio accesible','Formato para compartir','Variedad en un pedido','Picante a la medida','Cobertura','Reconocimiento','Historia y origen','Experiencia digital'];
 const VS=[['Frispicada','#9E1B22',[4,5,5,5,1,1,5,4],4],['Cadena global de pollo frito','#1C1514',[3,4,3,2,5,5,2,5],2.5],['Cadena local de pollo asado','#E0A21E',[5,4,2,3,4,4,3,3],2.5]];
-const vw=640,vh=340,pl=84,pr=18,pt=14,pb=84;const xs=i=>pl+i*(vw-pl-pr)/(AT.length-1),ys=v=>pt+(5-v)*(vh-pt-pb)/4;
+const vw=640,vh=330,pl=36,pr=14,pt=14,pb=74;const xs=i=>pl+i*(vw-pl-pr)/(AT.length-1),ys=v=>pt+(5-v)*(vh-pt-pb)/4;
 let svg=`<svg viewBox="0 0 ${vw} ${vh}" role="img" aria-label="Curva de valor de la Frispicada frente a sus competidores">`;
 for(let v=1;v<=5;v++)svg+=`<line x1="${pl}" x2="${vw-pr}" y1="${ys(v)}" y2="${ys(v)}" stroke="#E9DCCB"/><text x="${pl-12}" y="${ys(v)+4}" font-size="11" font-weight="800" fill="#7D6A5F" text-anchor="end">${v}</text>`;
 AT.forEach((a,i)=>{svg+=`<text transform="translate(${xs(i)},${vh-pb+16}) rotate(-28)" font-size="11.5" font-weight="800" fill="#7D6A5F" text-anchor="end">${a}</text>`});
@@ -1493,49 +1528,36 @@ q('#hm').addEventListener('click',e=>{const b=e.target.closest('button');if(b)rS
 // ---------- pestañas genéricas
 document.addEventListener('click',e=>{const b=e.target.closest('[data-tabs] button');if(!b)return;const box=b.parentElement,sl=box.closest('.slide');qa('[data-tabs] button').filter(x=>x.parentElement===box).forEach(x=>x.classList.toggle('on',x===b));
   sl.querySelectorAll('.pane').forEach(p=>{p.classList.toggle('on',p.dataset.pane===b.dataset.p)});grow(sl);if(M&&!RM)M.animate(sl.querySelector(`.pane[data-pane="${b.dataset.p}"]`),{opacity:[0,1],y:[14,0]},{duration:.35})});
-// ---------- notas del orador
-const NT={s1:'Abrir con la decisión: "Les pedimos aprobar MXN 8,5 millones para entrar a México por fases". Luego: Frisby lidera en Colombia con 281 tiendas y un cuarto de su categoría; para crecer tiene que salir. Señalar las tres brechas en rojo y decir que el socio las cierra. (1 min)',
-s2:'México ganó la matriz con 3,75 sobre 5. Si el jurado pregunta, mover los pesos en vivo: México sigue arriba salvo que la marca pese mucho más. Cerrar con indulgencia 97 vs. 83: es un público de antojo y celebración. (1 min)',
-s3:'Comparar en 20 segundos las cinco opciones y caer en el JV 60/40. Explicar la puerta de los 12 meses: no se gasta en la fase 2 si la piloto no cumple. (1 min)',
-s4:'Contar el cliente como una escena: viernes, partido, cuatro amigos. ¿Quién trae la Frispicada? Mostrar que por persona cuesta lo mismo que la competencia. (45 s)',
-s5:'Tocar Producto y Marca para mostrar la hibridación. Luego cambiar a Apps en la cadena de precio: cada combo por app deja $90 menos, por eso empujamos WhatsApp. (1 min)',
-s6:'Apagar y prender las curvas: KFC gana en cobertura y marca; nosotros en formato, variedad, picante e historia. Eso es el océano azul. (45 s)',
-s7:'Mover el simulador: con 95 tickets se llega al equilibrio; con 130, 13,5 % de margen. Mostrar R2 y R1 en el mapa. Cerrar leyendo lo que pedimos a la junta. (1 min 30 s)'};
-const notes=q('#notes');
-const setNotes=o=>{notes.classList.toggle('on',o);q('#notesBtn').classList.toggle('on',o);q('#notesBtn').setAttribute('aria-pressed',o)};
-q('#notesBtn').addEventListener('click',()=>setNotes(!notes.classList.contains('on')));
-// ---------- cronómetro de 7 minutos
-let left=420,tid=null;
-const fmtT=s=>(s<0?'−':'')+Math.floor(Math.abs(s)/60)+':'+String(Math.abs(s)%60).padStart(2,'0');
-function paintT(){const t=fmtT(left);q('#sbTmr').textContent=t;q('#tmrBtn').textContent=t;q('#sbTmr').className='tmr'+(tid?' run':'')+(left<60?' late':'');q('#tmrBtn').style.color=left<60?'#B3202A':''}
-function startT(reset){if(reset){left=420}if(tid){clearInterval(tid);tid=null}else{tid=setInterval(()=>{left--;paintT()},1000)}paintT()}
-q('#tmrBtn').addEventListener('click',()=>startT(false));
-q('#playBtn').addEventListener('click',()=>{location.hash='#/s1';if(tid){clearInterval(tid);tid=null}startT(true);document.body.classList.add('pres');try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}catch(_){}openSb(false)});
-q('#fsBtn').addEventListener('click',()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(_){}});
-// ---------- rutas
-const ORDER=['s1','s2','s3','s4','s5','s6','s7'];let curS=null;
 function grow(sl){sl.querySelectorAll('[data-w]').forEach(i=>{i.style.width=i.dataset.w+'%'});sl.querySelectorAll('.dg .t i').forEach((i,k)=>{i.style.width=(DG[k][1]/5*100)+'%'})}
 function counters(sl){if(!M||RM)return;sl.querySelectorAll('[data-cnt]').forEach(el=>{const to=+el.dataset.cnt,pre=el.dataset.pre||'';M.animate(0,to,{duration:1.2,ease:[.15,.8,.2,1],onUpdate:v=>{el.textContent=pre+nf(Math.round(v))}})})}
-function route(){const h=location.hash;const m=h.match(/^#\/(s[1-7])$/);
-  qa('.sb a.it').forEach(a=>a.classList.toggle('on',a.dataset.r===(m?m[1]:'inicio')));
-  if(!m){if(document.body.classList.contains('dk')){document.body.classList.remove('dk');document.body.classList.remove('pres');setNotes(false);if(h==='#/inicio'||h===''||h==='#')scrollTo(0,0)}curS=null;return}
-  const id=m[1],dir=curS?Math.sign(ORDER.indexOf(id)-ORDER.indexOf(curS)):1;document.body.classList.add('dk');
-  qa('.slide').forEach(s=>s.classList.toggle('on',s.id===id));const sl=q('#'+id);curS=id;
-  const n=ORDER.indexOf(id)+1;q('#dTitle').innerHTML=`<small>${String(n).padStart(2,'0')} / 07</small>${sl.dataset.t}`;q('#dCount').textContent=n+' / 7';q('#dprog').style.transform=`scaleX(${n/7})`;
-  q('#notesT').textContent=NT[id];scrollTo(0,0);openSb(false);
-  if(M&&!RM){M.animate(sl.querySelectorAll('.sh,.g4,.g2,.g3,.cd,.ans,.ask,.tabs2,.mods,.mdet,.mx2,.tally'),{opacity:[0,1],x:[dir*36,0]},{delay:M.stagger(.05),duration:.5,ease:[.2,.8,.2,1]});setTimeout(()=>{grow(sl);counters(sl)},180);
-    if(id==='s6')M.animate('#vc path',{pathLength:[0,1]},{delay:M.stagger(.25,{startDelay:.3}),duration:1.1,ease:[.2,.8,.2,1]})}
-  else grow(sl)}
-const go=d=>{const i=curS?ORDER.indexOf(curS):-1;const j=Math.max(0,Math.min(6,i+d));location.hash='#/'+ORDER[j]};
-q('#dPrev').addEventListener('click',()=>go(-1));q('#dNext').addEventListener('click',()=>go(1));
-document.addEventListener('keydown',e=>{if(!document.body.classList.contains('dk')||e.target.closest('input,textarea'))return;
-  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();e.stopImmediatePropagation();go(1)}
-  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();e.stopImmediatePropagation();go(-1)}
-  else if(e.key==='n'||e.key==='N')setNotes(!notes.classList.contains('on'));else if(e.key==='t'||e.key==='T')startT(false);
-  else if(e.key==='f'||e.key==='F')q('#fsBtn').click();else if(e.key==='Escape'&&sb.classList.contains('open'))openSb(false)},true);
-let tx=null,ty=null;q('#deck').addEventListener('touchstart',e=>{if(e.target.closest('input,.tabs2,#mixTabs,.seg,.hm,.wts')){tx=null;return}tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
-q('#deck').addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.6)go(dx<0?1:-1);tx=null},{passive:true});
-addEventListener('hashchange',route);route();paintT();
+// ---------- barra lateral contraíble (escritorio)
+const setMini=m=>{sb.classList.toggle('mini',m);document.body.classList.toggle('sbmini',m);q('#sbMini').setAttribute('aria-label',m?'Expandir la barra lateral':'Contraer la barra lateral');try{localStorage.setItem('sbmini',m?'1':'0')}catch(_){}};
+try{if(localStorage.getItem('sbmini')==='1')setMini(true)}catch(_){}
+q('#sbMini').addEventListener('click',()=>setMini(!sb.classList.contains('mini')));
+// ---------- vistas y desplazamiento
+const SEC=['p-preparacion','p-mercado','p-entrada','p-valor','p-mix','p-ventaja','p-finanzas'];
+const seen=new Set();
+function reveal(sl){if(seen.has(sl.id))return;seen.add(sl.id);grow(sl);counters(sl);
+  if(M&&!RM){M.animate(sl.querySelectorAll('.sh,.g4>*,.g2>*,.mods>*,.ans,.ask,.tabs2,.mx2,.cd'),{opacity:[.001,1],y:[24,0]},{delay:M.stagger(.04),duration:.5,ease:[.2,.8,.2,1]});
+    if(sl.id==='p-ventaja')M.animate('#vc path',{pathLength:[0,1]},{delay:M.stagger(.25,{startDelay:.2}),duration:1.1,ease:[.2,.8,.2,1]})}}
+let spyOn=false;
+function spy(){if(!document.body.classList.contains('dk'))return;let cur=null;const y=innerHeight*.35;
+  SEC.forEach(id=>{const r=q('#'+id).getBoundingClientRect();if(r.top<=y)cur=id});
+  const k=cur?SEC.indexOf(cur):-1;
+  qa('.sb a.it').forEach(a=>{const r=a.dataset.r;a.classList.toggle('on',cur?r===cur:r==='pitch');const n=SEC.indexOf(r);a.classList.toggle('done',n>-1&&n<k)});
+  const its=qa('.steps2 a.it');const fill=q('#sbFill');if(k<0)fill.style.height='0px';else{const a=its[0].getBoundingClientRect(),b=its[k].getBoundingClientRect();fill.style.height=(b.top-a.top)+'px'}
+  q('#mTitle').textContent=cur?q('#'+cur).dataset.t:'Propuesta a la junta'}
+function showPitch(){if(!document.body.classList.contains('dk')){document.body.classList.add('dk')}}
+function route(){const h=location.hash.slice(1);
+  if(h==='pitch'||SEC.includes(h)){showPitch();openSb(false);
+    requestAnimationFrame(()=>{const t=h==='pitch'?null:q('#'+h);if(t)t.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});else scrollTo(0,0);spy()});return}
+  if(document.body.classList.contains('dk')){document.body.classList.remove('dk');scrollTo(0,0)}
+  qa('.sb a.it').forEach(a=>{a.classList.toggle('on',a.dataset.r==='inicio');a.classList.remove('done')});q('#sbFill').style.height='0px';
+  if(h==='inicio'){scrollTo(0,0)}openSb(false)}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#p-"],a[href="#pitch"]');if(!a)return;const h=a.getAttribute('href');if(location.hash===h){e.preventDefault();route()}});
+addEventListener('scroll',()=>{if(!spyOn){spyOn=true;requestAnimationFrame(()=>{spy();spyOn=false})}},{passive:true});
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)reveal(x.target)}),{rootMargin:'0px 0px -15% 0px'});SEC.forEach(id=>io.observe(q('#'+id)))}else SEC.forEach(id=>reveal(q('#'+id)));
+addEventListener('hashchange',route);route();
 })();
 </script>
 </body>
