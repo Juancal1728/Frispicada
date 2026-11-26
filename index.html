@@ -1091,6 +1091,17 @@ body.dk .pend{display:none}
   .smr>button{grid-template-columns:1fr 30px;grid-template-areas:"n c" "t t";row-gap:30px;padding:12px 14px 16px}
   .smr>button>b{grid-area:n}.smr .smt{grid-area:t}.smr .smc{grid-area:c}
   .smd{grid-template-columns:1fr}.smxf{width:100%}.smxf button{flex:1;padding:0 6px;font-size:12.5px}}
+
+.chg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.chg>div{border-radius:22px;padding:18px 20px;display:grid;gap:8px;align-content:start}
+.cha{background:var(--soft)}.chc{background:var(--fr);color:#fff}
+.cht{font-size:11.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chc .cht{color:var(--fy)}
+.chg b{font-weight:900;font-size:22px;line-height:1.1}
+.chg ul{margin:0;padding-left:18px;display:grid;gap:6px;font-weight:700;font-size:14.5px}
+.chc ul{color:#FBE4DC}.chc strong{color:var(--fy)}.cha strong{color:var(--fr)}
+.chn{margin-top:14px;font-weight:800;background:var(--gold-soft);border-radius:16px;padding:12px 16px}
+@media (max-width:700px){.chg{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1490,11 +1501,17 @@ body.dk .pend{display:none}
       <div class="cd"><h3>Probabilidad × impacto</h3><div class="hm" id="hm" style="margin-top:12px"></div></div>
       <div class="cd"><h3>Riesgo y mitigación</h3><div class="rdet" id="rdet"></div><p class="sub2" style="margin-top:12px">Los dos riesgos altos son la rivalidad (20) y la marca (15). El registro ante el IMPI es la primera actividad del plan.</p></div>
     </div></div>
-    <div class="pane" data-pane="r3"><div class="cd"><h3>Indicadores clave de desempeño, mes 6</h3>
+    <div class="pane" data-pane="r3"><div class="cd chx"><h3>Dos canales, dos funciones</h3><p class="sub2">Por qué medimos la calificación en las apps si el canal prioritario es el directo.</p>
+      <div class="chg">
+        <div class="cha"><span class="cht">Apps · Rappi, DiDi Food y Uber Eats</span><b>Para que nos descubran</b><ul><li>35 % de las ventas en el modelo</li><li>Combo Familiar a <strong>$529</strong> por la comisión del 30 %</li><li>Meta: calificación de <strong>4,5 o más</strong>, porque con menos las apps muestran menos el restaurante</li></ul></div>
+        <div class="chc"><span class="cht">Canal propio · WhatsApp, web y tienda</span><b>Para ganar más</b><ul><li>Sin comisión: Combo Familiar a <strong>$449</strong></li><li>Cada combo deja <strong>$90 más</strong> que por app</li><li>Es el canal prioritario y la mitigación del riesgo de depender de las apps (R7)</li></ul></div>
+      </div>
+      <p class="chn">El cliente que nos conoce en una app vuelve a pedir por WhatsApp, donde paga menos y nosotros ganamos más.</p></div>
+    <div class="cd" style="margin-top:20px"><h3>Indicadores clave de desempeño, mes 6</h3>
       <div class="tbl-wrap" style="margin-top:12px"><table class="tbl"><thead><tr><th>Indicador</th><th>Qué mide</th><th>Fórmula</th><th>Meta</th></tr></thead><tbody>
         <tr><td>Margen EBITDA<small>financiero</small></td><td>Rentabilidad operativa de la tienda</td><td>EBITDA ÷ ventas netas</td><td>≥ 12 %</td></tr>
         <tr><td>Cobertura del equilibrio<small>comercial</small></td><td>Si la tienda vende lo suficiente</td><td>Tickets diarios ÷ 95</td><td>≥ 110 %</td></tr>
-        <tr><td>Calificación en apps<small>clientes</small></td><td>Satisfacción del cliente de domicilio</td><td>Promedio de estrellas en Rappi, DiDi Food y Uber Eats</td><td>≥ 4,5</td></tr>
+        <tr><td>Calificación en apps<small>clientes</small></td><td>Satisfacción del cliente de domicilio; define cuánto nos muestran las apps</td><td>Promedio de estrellas en Rappi, DiDi Food y Uber Eats</td><td>≥ 4,5</td></tr>
         <tr><td>ROAS de la campaña<small>marketing</small></td><td>Ventas por peso invertido en medios</td><td>Ventas atribuidas ÷ inversión en medios</td><td>≥ 3</td></tr>
       </tbody></table></div>
       <p class="src">Umbral de 12 %: rango del sector de 10 % a 15 % (OlaClick, 2026). ROAS: estimación del equipo para una marca nueva.</p></div></div>
