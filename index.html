@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="Frispicada">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
 <style>
 :root{
   /* Rojo Frisby profundo + dorado + crema: la marca, en tono sobrio */
@@ -805,6 +805,39 @@ body.dk .deck{display:block}
 
 
 .sheet{z-index:90}.toast{z-index:96}
+
+/* ===== propuesta: sistema de memorando (ronda 1) ===== */
+.deck{--serif:'Source Serif 4',Georgia,'Times New Roman',serif}
+.deck .sh h2,.deck .phero h1,.deck .kpi b,.deck .ask h3{font-family:var(--serif)}
+.deck .sh h2{font-weight:700;letter-spacing:-.015em}
+.deck .phero h1{font-weight:700;letter-spacing:-.02em}
+.deck .kpi b{font-weight:700;letter-spacing:-.01em}
+.deck .ask h3{font-weight:700}
+.eqc svg{width:100%;height:auto;display:block;margin-top:10px}
+.gantt{display:grid;gap:8px;margin-top:14px;font-weight:800;font-size:13px}
+.gantt .gr{display:grid;grid-template-columns:minmax(150px,280px) 1fr;gap:12px;align-items:center}
+.gantt .gr>span{line-height:1.25}
+.gantt .gt{position:relative;height:18px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--soft) 0 calc(100%/6 - 1px),var(--blush-2) calc(100%/6 - 1px) calc(100%/6))}
+.gantt .gt i{position:absolute;top:0;bottom:0;border-radius:6px;background:#C9B7A7}
+.gantt .gt i.k{background:var(--line)}
+.gantt .gh .ga{display:grid;grid-template-columns:repeat(6,1fr);font-size:11.5px;color:var(--muted);text-align:center;font-weight:900}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.tbl th{text-align:left;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:2px solid var(--line)}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--blush-2);vertical-align:top}
+.tbl th:not(:first-child),.tbl td:not(:first-child){text-align:right}
+.tbl td small{display:block;color:var(--muted);font-weight:700;font-size:12px}
+.tbl tr.tot td{font-weight:900;background:var(--gold-soft)}
+.tbl tr.hl td{color:var(--fr);font-weight:900}
+.sens{display:grid;gap:10px;margin-top:12px}
+.sens .r{display:grid;grid-template-columns:minmax(150px,1fr) 1.2fr 58px 92px;gap:10px;align-items:center;font-weight:800;font-size:14px}
+.sens .t{position:relative;height:20px;background:var(--soft);border-radius:8px;overflow:hidden}
+.sens .t i{display:block;height:100%;background:var(--blush-2);border-radius:8px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.sens .r.us .t i{background:var(--fr)}
+.sens .t::after{content:"";position:absolute;top:-4px;bottom:-4px;left:80%;width:2px;background:var(--line)}
+.sens b{text-align:right;font-variant-numeric:tabular-nums}
+.sens small{color:var(--muted);font-weight:800;text-align:right}
+@media (max-width:560px){.gantt .gr{grid-template-columns:1fr;gap:4px}.sens .r{grid-template-columns:1fr 1fr 58px;}.sens .r .t{grid-column:1/-1;order:3}}
 </style>
 </head>
 <body>
@@ -1053,7 +1086,7 @@ body.dk .deck{display:block}
   <header class="phero" id="pitch-top"><div class="in2">
     <div><p class="ey">Propuesta a la junta directiva de Frisby S.A. BIC</p>
       <h1>Llevemos la Frispicada a <span>Ciudad de México</span></h1>
-      <p class="ld">Pedimos aprobar <b>MXN 8,5 millones</b> para entrar a México con un joint venture 60/40: una tienda piloto y dos cocinas de entrega. A los 12 meses, la tienda debe superar <b>100 pedidos diarios</b> y un <b>margen EBITDA de 12 %</b> para pasar a franquicia.</p>
+      <p class="ld">Pedimos aprobar <b>MXN 8,5 millones</b> para entrar a México con un joint venture 60/40: una tienda piloto y dos cocinas de entrega. A los 12 meses, la tienda debe superar <b>100 tickets diarios</b> y un <b>margen EBITDA de 12 %</b> para pasar a franquicia.</p>
       <div class="bt"><a class="p1" href="#p-preparacion">Recorrer la propuesta</a><a class="p2" href="#p-finanzas">Ir a la decisión</a></div></div>
     <img id="phImg" alt="Combo Familiar de la Frispicada">
   </div></header>
@@ -1069,7 +1102,7 @@ body.dk .deck{display:block}
   </nav>
 <!-- 1 -->
   <article class="slide" id="p-preparacion" data-t="Preparación de la empresa">
-    <header class="sh"><div><p class="num">01 · Company readiness</p><h2>Frisby ya ganó Colombia; el siguiente paso es afuera</h2><p class="q">¿Por qué la empresa está preparada para ingresar a un mercado internacional?</p></div>
+    <header class="sh"><div><p class="num">01 · Company readiness</p><h2>Parcialmente preparados: el socio cierra las tres brechas</h2><p class="q">¿Por qué la empresa está preparada para ingresar a un mercado internacional?</p></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Diagnóstico y preparación</span></div></header>
     <div class="g4" data-a>
       <div class="cd kpi"><b data-cnt="281">281</b><span>restaurantes en más de 60 municipios</span></div>
@@ -1121,6 +1154,7 @@ body.dk .deck{display:block}
       <div class="cd"><h3>Ruta de entrada</h3><div class="phs" style="margin-top:16px"><div><i>1</i><b>Mes 1</b><small>Registro de marca ante el IMPI y socio</small></div><div><i>2</i><b>Mes 5</b><small>Tienda piloto y 2 cocinas ocultas en CDMX</small></div><div class="g"><i>✓</i><b>Mes 12</b><small>Revisión: &gt;100 tickets y EBITDA ≥ 12 %</small></div><div><i>3</i><b>Fase 2</b><small>Franquicia en Monterrey y Guadalajara</small></div></div></div>
       <div class="cd"><h3>Inversión: MXN 8,5 millones</h3><div class="inv" id="inv"></div><div class="invl" id="invl"></div><p class="src">American Industrial Magazine (2026); De Dinero (2026).</p></div>
     </div>
+    <div class="cd" style="margin-top:20px"><h3>Cronograma de implementación: seis meses</h3><p class="sub2">Figura 4 del informe; meses según la Tabla 19. Las barras oscuras marcan la apertura y la campaña.</p><div class="gantt" id="gantt"></div><p class="src">Fuente: Informe final, Figura 4 y Tabla 19 (Frisby en México, 2026).</p></div>
     <div class="cd" style="margin-top:20px"><h3>Así entraron otras marcas a México</h3><div class="g3" style="margin-top:12px">
       <div class="ns"><div><b>Raising Cane's</b><p>Llega en 2026 de la mano de Alsea, el mayor operador de restaurantes del país (Zócalo, 2025).</p></div></div>
       <div class="ns"><div><b>Juan Valdez</b><p>Volvió a México por franquicia en Mérida, sin inversión propia intensiva (Franquiciar Negocio, 2024).</p></div></div>
@@ -1152,6 +1186,20 @@ body.dk .deck{display:block}
     <div class="tabs2" id="mixTabs"></div>
     <div class="mx2" id="mixBox" style="margin-top:14px"></div>
     <div class="tally" id="tally"></div>
+    <div class="cd" style="margin-top:20px"><h3>Presupuesto de la campaña de lanzamiento: MXN 1.320.000</h3><p class="sub2">Ocho semanas. Tabla 15 del informe final.</p>
+      <div class="tbl-wrap" style="margin-top:12px"><table class="tbl"><thead><tr><th>Rubro</th><th>Monto</th></tr></thead><tbody>
+        <tr><td>Meta Ads (Facebook e Instagram)<small>CPM de $60 a $180 (Axon Digital, 2026)</small></td><td>$250.000</td></tr>
+        <tr><td>TikTok Ads<small>CPM de $25 a $120 (Holográfico, 2026)</small></td><td>$250.000</td></tr>
+        <tr><td>Google Search y Maps<small>Búsquedas locales</small></td><td>$80.000</td></tr>
+        <tr><td>2 macroinfluencers de comida<small>$25.000 a $200.000 por pieza (Thinking Social, 2026)</small></td><td>$160.000</td></tr>
+        <tr><td>12 microinfluencers<small>$3.000 a $25.000 por pieza (Thinking Social, 2026)</small></td><td>$120.000</td></tr>
+        <tr><td>20 nanoinfluencers<small>Canje o $500 a $3.000</small></td><td>$40.000</td></tr>
+        <tr><td>Promociones en aplicaciones<small>Descuentos cofinanciados</small></td><td>$120.000</td></tr>
+        <tr><td>Producción de contenido<small>Estimación</small></td><td>$100.000</td></tr>
+        <tr><td>Evento de apertura y muestras<small>Estimación</small></td><td>$80.000</td></tr>
+        <tr><td>Contingencia (10 %)</td><td>$120.000</td></tr>
+        <tr class="tot"><td>Total</td><td>$1.320.000</td></tr>
+      </tbody></table></div></div>
     <div class="cd" style="margin-top:20px"><h3>Cadena de precio del Combo Familiar</h3><p class="sub2">Elige el canal y mira a dónde va cada peso.</p>
       <div class="seg" id="chSeg"><button class="on" data-c="t">Tienda y WhatsApp · $449</button><button data-c="l">Lanzamiento · $399</button><button data-c="a">Apps · $529</button></div>
       <div class="wf" id="wf"></div><p class="src">Costo unitario $144 (pollo a $40,50/kg, Profeco); comisión de apps 30 % (PoloTab, 2026); IVA 16 %.</p></div>
@@ -1177,10 +1225,10 @@ body.dk .deck{display:block}
   <article class="slide" id="p-finanzas" data-t="Riesgos y viabilidad financiera">
     <header class="sh"><div><p class="num">07 · Risk and financial viability</p><h2>Riesgo acotado, números que cierran</h2><p class="q">¿Qué podría salir mal? ¿Cómo gestionarlo? ¿Cómo medir el éxito?</p></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Riesgos, plan y KPI</span><span class="chipr">Rúbrica <b>15 %</b> Viabilidad financiera</span></div></header>
-    <div class="tabs2" data-tabs="r"><button class="on" data-p="r1">Simulador</button><button data-p="r2">Mapa de riesgos</button><button data-p="r3">KPI</button></div>
+    <div class="tabs2" data-tabs="r"><button class="on" data-p="r1">Simulador</button><button data-p="r2">Mapa de riesgos</button><button data-p="r3">KPI</button><button data-p="r4">Estado de resultados</button><button data-p="r5">Sensibilidad</button></div>
     <div class="pane on" data-pane="r1"><div class="g2" style="margin-top:0">
       <div class="cd sim"><h3>Tienda piloto: mueve las ventas</h3><label for="tk">Tickets diarios <output id="tkO">130</output></label><input type="range" id="tk" min="60" max="200" step="1" value="130"><div class="ticks"><span>60</span><span>Pesimista 100</span><span>Base 130</span><span>Optimista 160</span><span>200</span></div>
-        <div class="gauge" id="gauge"><i id="gI"></i><span id="gS"></span></div><div class="verdict" id="verd"></div></div>
+        <div class="eqc" id="eqc"></div><div class="verdict" id="verd"></div></div>
       <div class="cd sim"><h3>Resultado mensual</h3><div class="out"><div><b id="oN">—</b><small>Ventas netas</small></div><div><b id="oE">—</b><small>EBITDA</small></div><div><b id="oM">—</b><small>Margen EBITDA</small></div></div>
         <div class="out"><div><b>62,8 %</b><small>Margen de contribución del combo</small></div><div><b id="oP">—</b><small>Recuperación de la tienda</small></div><div><b id="oR">—</b><small>Retorno anual</small></div></div>
         <p class="src">Ticket $300 con IVA; costos variables 50,5 %; fijos $363.251 al mes; inversión de la tienda MXN 5,5 millones.</p></div>
@@ -1189,11 +1237,33 @@ body.dk .deck{display:block}
       <div class="cd"><h3>Probabilidad × impacto</h3><div class="hm" id="hm" style="margin-top:12px"></div></div>
       <div class="cd"><h3>Riesgo y mitigación</h3><div class="rdet" id="rdet"></div><p class="sub2" style="margin-top:12px">Los dos riesgos altos son la rivalidad (20) y la marca (15). El registro ante el IMPI es la primera actividad del plan.</p></div>
     </div></div>
-    <div class="pane" data-pane="r3"><div class="g4" style="margin-top:0">
-      <div class="cd kpi"><b>≥ 12 %</b><span>Margen EBITDA al mes 6 (sector: 10 % a 15 %)</span></div>
-      <div class="cd kpi"><b>≥ 110 %</b><span>Cobertura del equilibrio: más de 100 tickets diarios</span></div>
-      <div class="cd kpi"><b>≥ 4,5</b><span>Calificación en Rappi, DiDi Food y Uber Eats</span></div>
-      <div class="cd kpi"><b>≥ 3</b><span>ROAS de la campaña de lanzamiento</span></div>
+    <div class="pane" data-pane="r3"><div class="cd"><h3>Indicadores clave de desempeño, mes 6</h3><p class="sub2">Tabla 20 del informe final.</p>
+      <div class="tbl-wrap" style="margin-top:12px"><table class="tbl"><thead><tr><th>Indicador</th><th>Qué mide</th><th>Fórmula</th><th>Meta</th></tr></thead><tbody>
+        <tr><td>Margen EBITDA<small>financiero</small></td><td>Rentabilidad operativa de la tienda</td><td>EBITDA ÷ ventas netas</td><td>≥ 12 %</td></tr>
+        <tr><td>Cobertura del equilibrio<small>comercial</small></td><td>Si la tienda vende lo suficiente</td><td>Tickets diarios ÷ 95</td><td>≥ 110 %</td></tr>
+        <tr><td>Calificación en apps<small>clientes</small></td><td>Satisfacción del cliente de domicilio</td><td>Promedio de estrellas en Rappi, DiDi Food y Uber Eats</td><td>≥ 4,5</td></tr>
+        <tr><td>ROAS de la campaña<small>marketing</small></td><td>Ventas por peso invertido en medios</td><td>Ventas atribuidas ÷ inversión en medios</td><td>≥ 3</td></tr>
+      </tbody></table></div>
+      <p class="src">Umbral de 12 %: rango del sector de 10 % a 15 % (OlaClick, 2026). ROAS: estimación del equipo para una marca nueva.</p></div></div>
+    <div class="pane" data-pane="r4"><div class="cd"><h3>Estado de resultados mensual por escenario</h3><p class="sub2">MXN sin IVA. Tabla 14 del informe final. Tickets diarios × $300 con IVA × 30 días.</p>
+      <div class="tbl-wrap" style="margin-top:12px"><table class="tbl"><thead><tr><th>Concepto</th><th>Pesimista (100)</th><th>Base (130)</th><th>Optimista (160)</th></tr></thead><tbody>
+        <tr><td>Ventas con IVA</td><td>$900.000</td><td>$1.170.000</td><td>$1.440.000</td></tr>
+        <tr><td>Ventas netas</td><td>$775.862</td><td>$1.008.621</td><td>$1.241.379</td></tr>
+        <tr><td>Alimentos y empaque (35 %)</td><td>−$271.552</td><td>−$353.017</td><td>−$434.483</td></tr>
+        <tr><td>Comisiones de apps (35 % × 30 %)</td><td>−$81.466</td><td>−$105.905</td><td>−$130.345</td></tr>
+        <tr><td>Regalía a Frisby (5 %)</td><td>−$38.793</td><td>−$50.431</td><td>−$62.069</td></tr>
+        <tr><td>Costos fijos</td><td>−$363.251</td><td>−$363.251</td><td>−$363.251</td></tr>
+        <tr class="tot"><td>EBITDA</td><td>$20.801</td><td>$136.016</td><td>$251.232</td></tr>
+        <tr class="hl"><td>Margen EBITDA</td><td>2,7 %</td><td>13,5 %</td><td>20,2 %</td></tr>
+      </tbody></table></div>
+      <p class="src">Personal: un gerente ($22.000), dos cocineros ($11.000) y nueve colaboradores al salario mínimo, más 30 % de carga social. Arriendo: 120 m² a $650 más $6.000 de mantenimiento. Anexo D.</p></div></div>
+    <div class="pane" data-pane="r5"><div class="g2" style="margin-top:0">
+      <div class="cd"><h3>Sensibilidad del escenario base</h3><p class="sub2">Anexo C: cinco choques sobre 130 tickets diarios. La línea marca el 12 % de la condición de la junta.</p><div class="sens" id="sens"></div></div>
+      <div class="cd"><h3>Lectura</h3><div class="ns" style="margin-top:12px">
+        <div><b>Pollo</b><p>Un alza de 20 % en el pollo baja el margen a 9,9 %: es la variable que más se debe vigilar.</p></div>
+        <div><b>Ticket</b><p>Un ticket 10 % menor baja el margen a 9,5 % y sube el equilibrio a 105 tickets.</p></div>
+        <div><b>Combinado</b><p>Pollo +20 % y ticket −10 % a la vez dejan el margen en 5,9 %: rentable, con poco colchón.</p></div></div>
+        <p class="src">Elaboración propia con el modelo de la Tabla 14. El alza del pollo se aplica sobre el 51 % del costo de alimentos.</p></div>
     </div></div>
     <div class="ask"><div><h3>¿Por qué invertir? <b>Porque el riesgo está acotado y el aprendizaje es grande.</b></h3><ol><li>México es el mercado con mejor evidencia.</li><li>El JV limita la apuesta a MXN 8,5 millones, menos del 1 % de los ingresos anuales.</li><li>Con 95 tickets diarios la tienda ya no pierde; en el base gana 13,5 %.</li><li>Usar la marca afuera la protege, lo que faltó en España.</li></ol></div>
       <div class="gate"><b>Lo que pedimos a la junta</b><p>Aprobar la fase 1. A los 12 meses solo se pasa a franquicia si la tienda supera 100 tickets diarios y un margen EBITDA de 12 %.</p></div></div>
@@ -1471,7 +1541,7 @@ const money=v=>'$'+nf(Math.round(v));
 q('#sbLogo').src=IMG.logo;q('#s4img').src=IMG['combo-familiar'];q('#phImg').src=IMG['combo-familiar'];
 const sb=q('#sb');
 // ---------- slide 1: diagnóstico
-const DG=[['Producto',4,'Receta estandarizada y formato para compartir','Adaptar acompañamientos y salsas al gusto mexicano'],['Marca',2,'Notoria y querida en Colombia','Desconocida en México y registro vulnerable: auditar y registrar en el IMPI'],['Finanzas',4,'Ingresos cercanos a $1 billón COP y plan de $98.000 millones','Ingresos en pesos colombianos: compartir el capital con un socio'],['Producción',3,'Planta propia en Pereira','El pollo no se puede importar: proveedor avícola local'],['Talento',2,'Más de 6.000 colaboradores y cultura de servicio','Sin directivos con experiencia en México: contratar gerente país'],['Tecnología',3,'App y canales digitales propios','La app no opera en México: Rappi, DiDi Food, Uber Eats y WhatsApp'],['Distribución',2,'Domina tienda, domicilio y centros comerciales','Sin locales ni logística en CDMX: lo aporta el socio'],['Experiencia',1,'Marcas registradas en seis países','Ninguna operación en el exterior: entrar por fases']];
+const DG=[['Producto',4,'Receta estandarizada y formato para compartir','Adaptar acompañamientos y salsas al gusto mexicano'],['Marca',2,'Notoria y querida en Colombia','Desconocida en México y registro vulnerable: auditar y registrar en el IMPI'],['Recursos financieros',4,'Ingresos cercanos a $1 billón COP y plan de $98.000 millones','Ingresos en pesos colombianos: compartir el capital con un socio'],['Producción',3,'Planta propia en Pereira','El pollo no se puede importar: proveedor avícola local'],['Talento humano',2,'Más de 6.000 colaboradores y cultura de servicio','Sin directivos con experiencia en México: contratar gerente país'],['Tecnología',3,'App y canales digitales propios','La app no opera en México: Rappi, DiDi Food, Uber Eats y WhatsApp'],['Distribución',2,'Domina tienda, domicilio y centros comerciales','Sin locales ni logística en CDMX: lo aporta el socio'],['Experiencia internacional',1,'Marcas registradas en seis países','Ninguna operación en el exterior: entrar por fases']];
 q('#dg').innerHTML=DG.map((d,i)=>`<button type="button" class="${d[1]<=2?'lo':d[1]==3?'mid':'hi'}" data-i="${i}"><span>${d[0]}</span><span class="t"><i style="width:0"></i></span><b>${d[1]}</b></button>`).join('');
 const dgShow=i=>{qa('#dg button').forEach((b,j)=>b.classList.toggle('on',j===i));const d=DG[i];q('#dgd').innerHTML=`<b>${d[0]} · nivel ${d[1]} de 5</b>Fortaleza: ${d[2]}.<br>Brecha y acción: ${d[3]}.`};
 q('#dg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)dgShow(+b.dataset.i)});dgShow(1);
@@ -1495,7 +1565,7 @@ q('#hof').innerHTML=HF.map(h=>`<div class="r${h[0]==='Indulgencia'||h[0]==='Indi
 const PT=[['Rivalidad',5,'KFC es el referente; Popeyes y Raising Cane\'s se expanden'],['Sustitutos',5,'Pollo rostizado, tacos, pizza y hamburguesas'],['Compradores',4,'Cambiar de marca no cuesta nada; las apps comparan precios'],['Nuevos entrantes',3,'Las cocinas ocultas bajan la barrera de entrada'],['Proveedores',2,'4,07 millones de toneladas y grandes integradores como Bachoco']];
 q('#prt').innerHTML=PT.map(p=>`<div class="r"><h4>${p[0]}</h4><span class="mt">${[1,2,3,4,5].map(i=>`<i class="${i<=p[1]?'on':''}"></i>`).join('')}</span><p>${p[2]}</p></div>`).join('');
 // ---------- slide 3: modalidades
-const MD=[['Exportación',1,1,2,'No aplica al pollo, que no se puede importar; solo a la mezcla de empanizado.'],['Licencia',1,1,4,'No protege la receta ni la experiencia en tienda.'],['Franquicia maestra',3,2,3,'Útil en la fase 2, cuando el modelo ya esté probado en CDMX.'],['Joint venture 60/40',4,3,3,'<b>Recomendada.</b> El socio aporta locales, permisos y conocimiento; Frisby conserva el control de marca, receta y manual de operación.'],['Inversión 100 %',5,5,5,'Control total, pero sin experiencia en el mercado el riesgo y la inversión son los más altos.']];
+const MD=[['Exportación',1,1,1,'No aplica al pollo, que no se puede importar; solo a la mezcla de empanizado.'],['Licencia',1,1,4,'No protege la receta ni la experiencia en tienda.'],['Franquicia maestra',3,2,3,'Útil en la fase 2, cuando el modelo ya esté probado en CDMX.'],['Joint venture 60/40',4,3,3,'<b>Recomendada.</b> El socio aporta locales, permisos y conocimiento; Frisby conserva el control de marca, receta y manual de operación.'],['Inversión 100 %',5,5,5,'Control total, pero sin experiencia en el mercado el riesgo y la inversión son los más altos.']];
 const mt=n=>`<span class="mt">${[1,2,3,4,5].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</span>`;
 q('#mods').innerHTML=MD.map((m,i)=>`<button type="button" data-i="${i}" class="${i===3?'rec':''}">${i===3?'<span class="badge2">Elegida</span>':''}<h4>${m[0]}</h4><span class="lv"><span>Control</span>${mt(m[1])}<span>Inversión</span>${mt(m[2])}<span>Riesgo</span>${mt(m[3])}</span></button>`).join('');
 const mShow=i=>{qa('#mods button').forEach((b,j)=>b.classList.toggle('on',j===i));q('#mdet').innerHTML=`<b>${MD[i][0]}:</b> ${MD[i][4]}`};
@@ -1504,7 +1574,7 @@ const IV=[['Equipo y adecuación de la tienda',4.5,'#9E1B22'],['Capital de traba
 q('#inv').innerHTML=IV.map(v=>`<i style="flex:${v[1]};background:${v[2]};color:${v[2]==='#F2B91E'?'#1C1514':'#fff'}">${nf(v[1],1)}</i>`).join('');
 q('#invl').innerHTML=IV.map(v=>`<span><em style="background:${v[2]}"></em>${v[0]}</span>`).join('');
 // ---------- slide 4: precio por persona
-const PP=[['Frispicada',112,1],['Combo 12 piezas',110,0],['Bucket 12 piezas',132,0],['Bucket 8 piezas',92,0]];
+const PP=[['Frispicada',112,1],['Popeyes, combo 12 piezas',110,0],['KFC, bucket 12 piezas',132,0],['KFC, bucket 8 piezas',92,0]];
 q('#pp2').innerHTML=PP.map(p=>`<div class="r${p[2]?' us':''}"><span>${p[0]}</span><span class="t"><i data-w="${p[1]/132*100}" style="width:0"></i></span><b>$${p[1]}</b></div>`).join('');
 // ---------- slide 5: mezcla
 const MX=[['Producto','Receta y proceso del pollo; formato de caja','Alitas, elote, papas y salsas mexicanas','Hibridación','Cultura: el picante y el elote'],['Marca','Nombre, logo, colores, mascota y firma','Subeslogan local "¿Quién trae la Frispicada?"','Hibridación','Cultura y registro en el IMPI'],['Empaque','Caja roja y amarilla','Material compostable, idioma y precio','Adaptación','Norma de plásticos de CDMX y PROFECO'],['Precio','Paridad con la competencia por persona','Precios en MXN con IVA; precio de apps','Adaptación','Salario mínimo y competencia'],['Distribución','Tienda y domicilio','Peso de apps y cocinas ocultas','Adaptación','Comisiones de 25 % a 30 %'],['Comunicación','Tono familiar y alegre','Español mexicano e influencers locales','Adaptación','Indulgencia alta (97)'],['Posicionamiento','Pollo crujiente para compartir','Ocasión de botana en grupo','Hibridación','Colectivismo']];
@@ -1530,15 +1600,33 @@ q('#vcl').innerHTML=VS.map((s,k)=>`<button type="button" data-k="${k}"><i style=
 q('#vcl').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;b.classList.toggle('off');q(`#vc .vl[data-k="${b.dataset.k}"]`).style.opacity=b.classList.contains('off')?.08:1});
 // ---------- slide 7: simulador, riesgos
 const F=363251,VR=.505,INV=5500000,BE=F/(1-VR)*1.16/30/300;
-const g=q('#gauge');g.style.setProperty('--be',((BE-60)/140*100)+'%');q('#gS').textContent='';
-function sim(t){const net=t*300*30/1.16,e=net*(1-VR)-F,m=e/net;
+const TK=t=>t*300*30/1.16, TC=t=>F+VR*TK(t);
+function eqChart(t){const W=640,H=300,pl=58,pr=104,pt=14,pb=40,x0=40,x1=180,ymax=1.4e6;
+  const X=v=>pl+(v-x0)/(x1-x0)*(W-pl-pr),Y=v=>pt+(1-v/ymax)*(H-pt-pb);
+  let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Punto de equilibrio: ventas netas y costos totales frente a tickets diarios. Equilibrio cerca de 95 tickets.">`;
+  for(let m=0;m<=1.4001;m+=.2){const y=Y(m*1e6);g+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" stroke="#E9DCCB"/><text x="${pl-8}" y="${y+4}" font-size="11" font-weight="800" fill="#7D6A5F" text-anchor="end">${nf(m,1)}</text>`}
+  for(let k=40;k<=180;k+=20)g+=`<text x="${X(k)}" y="${H-pb+18}" font-size="11" font-weight="800" fill="#7D6A5F" text-anchor="middle">${k}</text>`;
+  g+=`<text x="${pl-8}" y="${pt-4}" font-size="11" font-weight="900" fill="#7D6A5F" text-anchor="end">MXN M</text><text x="${W-pr}" y="${H-6}" font-size="11" font-weight="800" fill="#7D6A5F" text-anchor="end">Tickets diarios</text>`;
+  g+=`<line x1="${X(BE)}" x2="${X(BE)}" y1="${pt}" y2="${H-pb}" stroke="#1C1514" stroke-width="1.3" stroke-dasharray="3 4"/>`;
+  g+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(F)}" y2="${Y(F)}" stroke="#B9A79C" stroke-width="1.5" stroke-dasharray="2 4"/>`;
+  g+=`<path d="M${X(40)} ${Y(TC(40))} L${X(180)} ${Y(TC(180))}" stroke="#7D6A5F" stroke-width="3" stroke-dasharray="8 6" fill="none"/>`;
+  g+=`<path d="M${X(40)} ${Y(TK(40))} L${X(180)} ${Y(TK(180))}" stroke="#9E1B22" stroke-width="4" fill="none"/>`;
+  g+=`<text x="${X(180)+6}" y="${Y(TK(180))+4}" font-size="11.5" font-weight="900" fill="#9E1B22">Ventas</text><text x="${X(180)+6}" y="${Y(TC(180))+4}" font-size="11.5" font-weight="900" fill="#7D6A5F">Costos totales</text><text x="${X(180)+6}" y="${Y(F)+4}" font-size="11.5" font-weight="900" fill="#9A8478">Fijos</text>`;
+  g+=`<text x="${X(BE)+6}" y="${pt+12}" font-size="11.5" font-weight="900" fill="#1C1514">Equilibrio: ${nf(BE,0)}</text>`;
+  g+=`<circle cx="${X(t)}" cy="${Y(TK(t))}" r="7" fill="#F2B91E" stroke="#1C1514" stroke-width="2"/>`;
+  return g+'</svg>'}
+function sim(t){const net=TK(t),e=net*(1-VR)-F,m=e/net;
   q('#tkO').textContent=t;q('#oN').textContent=money(net);q('#oE').textContent=(e<0?'−':'')+money(Math.abs(e));q('#oE').style.color=e<0?'#B3202A':'#2E7D32';
   q('#oM').textContent=nf(m*100,1)+' %';q('#oP').textContent=e>0?nf(INV/e,0)+' meses':'—';q('#oR').textContent=nf(12*e/INV*100,1)+' %';
-  q('#gI').style.left=((t-60)/140*100)+'%';
+  q('#eqc').innerHTML=eqChart(t);
   const v=q('#verd');if(t<BE){v.className='verdict no';v.textContent=`Pierde: faltan ${Math.ceil(BE-t)} tickets para el equilibrio (${nf(BE,0)} diarios)`}
   else if(t<=100||m<.12){v.className='verdict go';v.textContent='Rentable, pero aún no cumple la condición para franquiciar (>100 tickets y 12 %)'}
   else{v.className='verdict ok';v.textContent='Cumple la condición de la junta: se puede pasar a la fase 2'}}
 q('#tk').addEventListener('input',e=>sim(+e.target.value));sim(130);
+const GT=[['Auditoría y registro de marca (IMPI)',0,1],['Selección del socio y acuerdo del JV',0,2],['Constitución de la sociedad y alta en el SAT',1,2],['Contrato con proveedor avícola',1,2],['Local: búsqueda y adecuación',1,3],['Permisos (COFEPRIS y alcaldía)',2,3],['Contratación y capacitación',2,4],['Pruebas de sabor y alta en apps',3,4],['Apertura de cocinas ocultas',3,4],['Apertura de la tienda piloto',4,5,1],['Campaña de lanzamiento (8 semanas)',4,6,1],['Medición y ajuste de carta y precios',5,6]];
+q('#gantt').innerHTML=`<div class="gr gh"><span></span><div class="ga">${['Mes 1','Mes 2','Mes 3','Mes 4','Mes 5','Mes 6'].map(m=>`<span>${m}</span>`).join('')}</div></div>`+GT.map(g=>`<div class="gr"><span>${g[0]}</span><div class="gt"><i class="${g[3]?'k':''}" style="left:${g[1]/6*100}%;width:${(g[2]-g[1])/6*100}%"></i></div></div>`).join('');
+const SN=[['Escenario base',136016,13.5,95],['Precio del pollo +20 %',100273,9.9,102],['Ticket promedio −10 %',86090,9.5,105],['Ventas por apps 50 %',90628,9.0,104],['Arriendo +25 %',116516,11.6,100],['Combinado: pollo +20 % y ticket −10 %',53920,5.9,113]];
+q('#sens').innerHTML=SN.map((x,i)=>`<div class="r${i?'':' us'}"><span>${x[0]}</span><span class="t"><i data-w="${x[2]/15*100}" style="width:0"></i></span><b>${nf(x[2],1)} %</b><small>${x[3]} tickets</small></div>`).join('')+'<p class="src">Margen EBITDA mensual. Escala de 0 % a 15 %; la línea vertical marca 12 %.</p>';
 const RK=[['R1','Registro de marca vulnerable',3,5,'Auditoría en el IMPI, nuevos registros y uso documentado','Gerencia jurídica'],['R2','Rivalidad de KFC, Popeyes y Raising Cane\'s',5,4,'Diferenciar por formato, salsas y origen','Gerente de mercadeo'],['R3','Alza del precio del pollo',4,3,'Contrato anual indexado con dos proveedores','Gerente de operaciones'],['R4','Depreciación del peso mexicano',3,3,'Forwards y reinversión local','Gerencia financiera'],['R5','Revisión del T-MEC',3,2,'Seguimiento trimestral','Gerente país'],['R6','Baja aceptación del sabor',2,4,'Pruebas de sabor y ajuste de salsas','Investigación de mercados'],['R7','Dependencia de las apps',4,3,'Canal propio por WhatsApp y precio diferenciado','Gerente comercial'],['R8','Alerta de inocuidad',2,5,'Protocolos de calidad y plan de crisis','Calidad'],['R9','Conflicto con el socio',2,4,'Pacto de accionistas con cláusulas de salida','Junta directiva']];
 const col=v=>v>=15?'#9E1B22':v>=8?'#F2B91E':'#E2ECDC';
 let hm='';for(let i=5;i>=1;i--){hm+=`<span class="ax">${i}</span>`;for(let p=1;p<=5;p++){const rs=RK.filter(r=>r[2]===p&&r[3]===i);hm+=`<div class="c" style="background:${col(p*i)}${p*i>=15?'':'55'}">${rs.map(r=>`<button type="button" data-r="${r[0]}">${r[0]}</button>`).join('')}</div>`}}
