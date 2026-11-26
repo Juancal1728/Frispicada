@@ -1055,6 +1055,42 @@ body.dk .pend{display:none}
 @media (max-width:900px){.vis{grid-template-columns:1fr;gap:14px}.vimg{min-height:220px;border-radius:26px}.vimg img{max-height:190px}.vfacts div{padding:14px 16px;border-radius:22px;gap:12px}.vfacts span{font-size:14px}}
 @media (max-width:420px){.vfacts div{grid-template-columns:1fr;gap:4px}}
 @media (hover:none){.vis:hover .vimg img,.vfacts div:hover{transform:none}}
+
+/* ===== mix: espectro estandarizar → adaptar ===== */
+#mixTabs,#mixBox,#tally{display:none!important}
+.deck .smx{margin-top:22px}
+.smxh{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.smxf{display:inline-flex;background:var(--soft);border-radius:14px;padding:4px;gap:4px}
+.smxf button{min-height:38px;padding:0 12px;border-radius:10px;font-weight:900;font-size:13.5px;color:var(--muted);white-space:nowrap}
+.smxf button b{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:4px;border-radius:999px;background:#fff;color:var(--fr);font-size:11.5px}
+.smxf button.on{background:var(--fr);color:#fff}.smxf button.on b{background:var(--fy);color:var(--line)}
+.smxs{display:flex;justify-content:space-between;padding:0 58px 0 178px;margin:20px 0 6px;font-size:11.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.smxl{display:grid;gap:8px}
+.smr{border-radius:20px;background:var(--soft);transition:background .25s,box-shadow .25s,opacity .3s}
+.smr.off{display:none}
+.smr>button{width:100%;display:grid;grid-template-columns:150px 1fr 30px;gap:14px;align-items:center;padding:12px 14px;text-align:left;min-height:56px}
+.smr>button>b{font-weight:900;font-size:15.5px}
+.smt{position:relative;height:10px;border-radius:9px;background:linear-gradient(90deg,#E9DCCB,#F7D98A 50%,#F2B6A6)}
+.smt::before,.smt::after{content:"";position:absolute;top:-3px;width:2px;height:16px;background:rgba(59,29,20,.18)}
+.smt::before{left:33.3%}.smt::after{left:66.6%}
+.smt i{position:absolute;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:var(--fr);border:4px solid #fff;box-shadow:0 4px 10px -2px rgba(90,20,10,.45);transition:left .6s cubic-bezier(.3,1.3,.5,1)}
+.smt em{position:absolute;top:-30px;transform:translateX(-50%);font-style:normal;font-size:12px;font-weight:900;color:var(--fr);white-space:nowrap;transition:left .6s cubic-bezier(.3,1.3,.5,1)}
+.smc{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center;transition:transform .3s}
+.smc::before{content:"";width:8px;height:8px;border-right:2.5px solid var(--fr);border-bottom:2.5px solid var(--fr);transform:rotate(45deg) translateY(-2px)}
+.smr.open{background:#fff;box-shadow:inset 0 0 0 2px var(--fr)}
+.smr.open .smc{transform:rotate(180deg);background:var(--gold-soft)}
+.smd{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:0 14px 14px}
+.smr.open .smd{display:grid}
+.smd div{border-radius:16px;padding:12px 14px;background:var(--soft)}
+.smd h5{font-size:11.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.smd p{font-weight:800;font-size:14.5px;margin-top:4px;line-height:1.35}
+.smd div.y{background:var(--line);color:#fff}.smd div.y h5{color:var(--fy)}
+.smr:not(.open)>button:hover{background:rgba(255,255,255,.6);border-radius:20px}
+@media (max-width:700px){.smxs{padding:0 14px;margin-top:14px}
+  .smr>button{grid-template-columns:1fr 30px;grid-template-areas:"n c" "t t";row-gap:30px;padding:12px 14px 16px}
+  .smr>button>b{grid-area:n}.smr .smt{grid-area:t}.smr .smc{grid-area:c}
+  .smd{grid-template-columns:1fr}.smxf{width:100%}.smxf button{flex:1;padding:0 6px;font-size:12.5px}}
 </style>
 </head>
 <body>
@@ -1395,7 +1431,11 @@ body.dk .pend{display:none}
   <!-- 5 -->
   <article class="slide" id="p-mix" data-t="Marketing mix">
     <header class="sh"><div><p class="num">05 · Marketing mix</p><h2>Se mantiene la receta, se adapta la mesa</h2><p class="q">¿Qué elementos están estandarizados, adaptados o combinados? ¿Por qué?</p></div>
-      </header><div class="vis many"><figure class="vimg"><img data-vi="habanero" alt=""><img data-vi="chipotle" alt=""><img data-vi="tamarindo" alt=""><img data-vi="limon" alt=""><img data-vi="bbq" alt=""><figcaption>Las 5 salsas mexicanas</figcaption></figure><div class="vfacts"><div><b>Se mantiene</b><span>receta, marca y formato</span></div><div><b>Se adapta</b><span>salsas, elote, lenguaje y empaque</span></div><div><b>$449 · $399 · $529</b><span>tienda · lanzamiento · apps</span></div></div></div><div class="ans">Estrategia <b>híbrida</b>: pollo, marca y formato iguales; salsas, elote, lenguaje, empaque y canales a la mexicana. Precio de <b>paridad con más valor</b>.</div><details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
+      </header><div class="vis many"><figure class="vimg"><img data-vi="habanero" alt=""><img data-vi="chipotle" alt=""><img data-vi="tamarindo" alt=""><img data-vi="limon" alt=""><img data-vi="bbq" alt=""><figcaption>Las 5 salsas mexicanas</figcaption></figure><div class="vfacts"><div><b>Se mantiene</b><span>receta, marca y formato</span></div><div><b>Se adapta</b><span>salsas, elote, lenguaje y empaque</span></div><div><b>$449 · $399 · $529</b><span>tienda · lanzamiento · apps</span></div></div></div><div class="ans">Estrategia <b>híbrida</b>: pollo, marca y formato iguales; salsas, elote, lenguaje, empaque y canales a la mexicana. Precio de <b>paridad con más valor</b>.</div><div class="cd smx" id="smx"><div class="smxh"><div><h3>Qué se estandariza y qué se adapta</h3><p class="sub2">Las 7 variables del mix en una sola vista. Toca una para ver qué se mantiene, qué cambia y por qué.</p></div>
+      <div class="smxf" role="group" aria-label="Filtrar"><button type="button" class="on" data-f="all">Todas <b>7</b></button><button type="button" data-f="Hibridación">Hibridación <b>3</b></button><button type="button" data-f="Adaptación">Adaptación <b>4</b></button></div></div>
+      <div class="smxs" aria-hidden="true"><span>Estandarizar</span><span>Hibridar</span><span>Adaptar</span></div>
+      <div class="smxl" id="smxl"></div></div>
+    <details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
     <div class="tabs2" id="mixTabs"></div>
     <div class="mx2" id="mixBox" style="margin-top:14px"></div>
     <div class="tally" id="tally"></div>
@@ -1972,6 +2012,18 @@ bt.addEventListener('click',()=>{const o=!ds.every(d=>d.open);ds.forEach(d=>d.op
 ds.forEach(d=>d.addEventListener('toggle',()=>{sync();if(d.open){setTimeout(()=>dispatchEvent(new Event('resize')),40);const s=d.closest('.slide');s&&s.querySelectorAll('[data-w]').forEach(i=>{i.style.width=i.dataset.w+'%'})}}));
 // si un enlace lleva a algo dentro de un análisis cerrado, ábrelo
 addEventListener('hashchange',()=>{const t=document.getElementById(location.hash.slice(1));const d=t&&t.closest&&t.closest('details.more');if(d)d.open=true});
+})();
+
+// ===== mix: espectro interactivo =====
+(()=>{const MXP=[['Producto','Receta y proceso del pollo; formato de caja','Alitas, elote, papas y salsas mexicanas','Hibridación','El picante y el elote son parte de la mesa mexicana',48],['Marca','Nombre, logo, colores, mascota y firma','Subeslogan local "¿Quién trae la Frispicada?"','Hibridación','Cultura local y registro de la marca en el IMPI',38],['Empaque','Caja roja y amarilla','Material compostable, idioma y precio','Adaptación','Norma de plásticos de CDMX y reglas de PROFECO',74],['Precio','Paridad con la competencia por persona','Precios en MXN con IVA y precio de apps','Adaptación','Salario mínimo y precios de la competencia',80],['Distribución','Tienda y domicilio','Más peso de apps y cocinas ocultas','Adaptación','Comisiones de 25 % a 30 % en las apps',86],['Comunicación','Tono familiar y alegre','Español mexicano e influencers locales','Adaptación','Indulgencia alta (97 en Hofstede)',92],['Posicionamiento','Pollo crujiente para compartir','Ocasión de botana en grupo','Hibridación','Cultura colectivista: se pide para compartir',55]];
+const L=document.getElementById('smxl');
+L.innerHTML=MXP.map((m,i)=>`<div class="smr${i===0?' open':''}" data-d="${m[3]}"><button type="button" aria-expanded="${i===0}"><b>${m[0]}</b><span class="smt"><em style="left:${m[5]}%;transform:translateX(${m[5]>80?-85:m[5]<20?-15:-50}%)">${m[3]}</em><i style="left:${m[5]}%"></i></span><span class="smc"></span></button><div class="smd"><div><h5>Se mantiene</h5><p>${m[1]}</p></div><div><h5>Se adapta</h5><p>${m[2]}</p></div><div class="y"><h5>Por qué</h5><p>${m[4]}</p></div></div></div>`).join('');
+L.addEventListener('click',e=>{const b=e.target.closest('.smr>button');if(!b)return;const r=b.parentElement,o=!r.classList.contains('open');L.querySelectorAll('.smr').forEach(x=>{x.classList.remove('open');x.firstElementChild.setAttribute('aria-expanded','false')});if(o){r.classList.add('open');b.setAttribute('aria-expanded','true');if(window.Motion&&!matchMedia('(prefers-reduced-motion: reduce)').matches)Motion.animate(r.querySelectorAll('.smd>div'),{opacity:[0,1],y:[10,0]},{delay:Motion.stagger(.05),duration:.3})}});
+document.querySelector('.smxf').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('.smxf button').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;
+  L.querySelectorAll('.smr').forEach(r=>r.classList.toggle('off',f!=='all'&&r.dataset.d!==f))});
+// el punto entra desde la izquierda al aparecer
+if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const pts=[...L.querySelectorAll('.smt i,.smt em')];const fin=pts.map(p=>p.style.left);pts.forEach(p=>p.style.left='0%');
+  const io=new IntersectionObserver(es=>{if(es.some(x=>x.isIntersecting)){pts.forEach((p,k)=>setTimeout(()=>p.style.left=fin[k],60*Math.floor(k/2)));io.disconnect()}},{threshold:.3});io.observe(L)}
 })();
 </script>
 </body>
