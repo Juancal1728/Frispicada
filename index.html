@@ -857,6 +857,26 @@ body.dk .deck{display:block}
 .hm4 sup{font-size:.55em;font-weight:900;color:var(--fy);margin-left:2px}
 .hm-note{font-size:11.5px;font-weight:700;color:#CDBBB2;margin-top:12px}
 @media (max-width:560px){.hm4{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}}
+
+/* ===== propuesta: barra roja superior (mismo rojo del menú) y sin barra lateral ===== */
+.pbar{display:none}
+@media (min-width:1101px){
+  body.dk{padding-left:0 !important;transition:none}
+  body.dk .sb{display:none}
+  .pbar{display:block;position:sticky;top:0;z-index:60;background:var(--fr);color:#fff;box-shadow:0 14px 26px -22px rgba(60,10,10,.7)}
+  .pbar .in3{display:flex;align-items:center;gap:22px;max-width:1240px;margin:0 auto;padding:12px max(20px,env(safe-area-inset-left,0px));min-height:72px}
+  .pbar .lg img{height:46px;width:auto;display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.28))}
+  .pbar .pvsw{width:250px;flex:none;margin-left:auto;background:rgba(0,0,0,.22);border-color:rgba(255,255,255,.14)}
+  .pbar .pvsw button{min-height:38px;color:rgba(255,255,255,.78)}
+  .pbar .pvsw button[aria-pressed=true]{color:var(--line)}
+  .pbar .pnav{display:flex;gap:2px;flex:none}
+  .pbar .pnav a{color:#fff;text-decoration:none;font-weight:800;font-size:14.5px;padding:9px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+  .pbar .pnav a:hover{background:rgba(255,255,255,.1)}
+  .pbar .pnav a.on{background:var(--fy);color:var(--line)}
+  .pbar .pnav a.done{color:#FFE7A6}
+  .pbar .pnav a:focus-visible{outline:3px solid var(--fy);outline-offset:2px}
+  .slide{scroll-margin-top:84px}
+}
 </style>
 </head>
 <body>
@@ -1102,7 +1122,14 @@ body.dk .deck{display:block}
   </div>
 </footer>
 <section class="deck" id="deck" aria-label="Propuesta a la junta directiva">
-  <header class="phero" id="pitch-top"><div class="in2">
+  <div class="pbar" aria-label="Navegación de la propuesta"><div class="in3">
+    <a class="lg" href="#inicio" aria-label="Frisby, volver al menú"><img id="pbImg" alt="Frisby"></a>
+    <div class="vsw pvsw" role="group" aria-label="Vista" data-v="pitch"><span class="th"></span><button type="button" data-view="menu" aria-pressed="false">Menú</button><button type="button" data-view="pitch" aria-pressed="true">Propuesta</button></div>
+    <nav class="pnav" aria-label="Secciones de la propuesta">
+      <a href="#p-preparacion" data-nav="p-preparacion">Preparación</a><a href="#p-mercado" data-nav="p-mercado">Mercado</a><a href="#p-entrada" data-nav="p-entrada">Entrada</a><a href="#p-valor" data-nav="p-valor">Valor</a><a href="#p-mix" data-nav="p-mix">Mix</a><a href="#p-ventaja" data-nav="p-ventaja">Ventaja</a><a href="#p-finanzas" data-nav="p-finanzas">Riesgos</a>
+    </nav>
+  </div></div>
+    <header class="phero" id="pitch-top"><div class="in2">
     <div><p class="ey">Propuesta a la junta directiva de Frisby S.A. BIC</p>
       <h1>Llevemos la Frispicada a <span>Ciudad de México</span></h1>
       <p class="ld">Pedimos aprobar <b>MXN 8,5 millones</b> para entrar a México con un joint venture 60/40: una tienda piloto y dos cocinas de entrega. A los 12 meses, la tienda debe superar <b>100 tickets diarios</b> y un <b>margen EBITDA de 12 %</b> para pasar a franquicia.</p>
@@ -1665,6 +1692,7 @@ q('#sbMini').addEventListener('click',()=>setMini(!sb.classList.contains('mini')
 // ---------- vistas: menú y propuesta
 const SEC=['p-preparacion','p-mercado','p-entrada','p-valor','p-mix','p-ventaja','p-finanzas'];
 const MSEC=['arma','carta','combos','salsas','valor','origen','pedir'];
+q('#pbImg').src=q('.top .logo img').src;
 const seen=new Set();
 function reveal(sl){if(seen.has(sl.id))return;seen.add(sl.id);grow(sl);counters(sl);
   if(M&&!RM){M.animate(sl.querySelectorAll('.sh,.g4>*,.g2>*,.g3>*,.mods>*,.ans,.ask,.tabs2,.mx2'),{opacity:[.001,1],y:[24,0]},{delay:M.stagger(.04),duration:.5,ease:[.2,.8,.2,1]});
