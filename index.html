@@ -651,7 +651,7 @@ body.dk .deck{display:block}
 .cd .sub2{color:var(--muted);font-weight:700;font-size:13.5px;margin-top:4px}
 .kpi b{display:block;font-weight:900;font-size:clamp(26px,3vw,38px);color:var(--fr);line-height:1}
 .kpi span{display:block;font-weight:700;color:var(--muted);font-size:13.5px;margin-top:6px}
-.src{font-size:12px;font-weight:700;color:#A8968B;margin-top:10px}
+.src{font-size:12px;font-weight:700;color:#7D6A5F;margin-top:10px}
 @media (max-width:900px){.sh{grid-template-columns:1fr}.sh .rub{justify-self:start;align-items:flex-start}.g2,.g3{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* barras de diagnóstico */
 .dg{display:grid;gap:8px;margin-top:14px}
@@ -679,7 +679,12 @@ body.dk .deck{display:block}
 .wts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px;margin-top:12px}
 .wts label{display:grid;grid-template-columns:1fr 46px;gap:2px 8px;font-weight:800;font-size:13px;color:var(--muted)}
 .wts label output{text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
-.wts input{grid-column:1/-1;accent-color:var(--fr);width:100%}
+.wts input{grid-column:1/-1;accent-color:var(--fr);width:100%;height:26px;-webkit-appearance:none;appearance:none;background:transparent;margin:4px 0 2px;cursor:pointer}
+.wts input::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:var(--soft);box-shadow:inset 0 0 0 1px var(--blush-2)}
+.wts input::-moz-range-track{height:6px;border-radius:6px;background:var(--soft)}
+.wts input::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;margin-top:-7px;border-radius:50%;background:var(--fr);border:3px solid #fff;box-shadow:0 2px 6px rgba(60,20,10,.3)}
+.wts input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--fr);border:3px solid #fff}
+.wts input:focus-visible{outline:3px solid var(--line);outline-offset:4px}
 @media (max-width:600px){.wts{grid-template-columns:1fr}.rk .r{grid-template-columns:100px 1fr 46px;font-size:14px}}
 .pst{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .pst div{background:var(--panel);border-radius:20px;padding:16px;box-shadow:var(--sh)}
@@ -841,6 +846,17 @@ body.dk .deck{display:block}
 .sens b{text-align:right;font-variant-numeric:tabular-nums}
 .sens small{color:var(--muted);font-weight:800;text-align:right}
 @media (max-width:560px){.gantt .gr{grid-template-columns:1fr;gap:4px}.sens .r{grid-template-columns:1fr 1fr 58px;}.sens .r .t{grid-column:1/-1;order:3}}
+
+/* ===== ronda: fuentes visibles y franja de métricas (patrón IR: Wingstop/Chipotle) ===== */
+.fuente{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.fuente span{background:var(--soft);color:#6E5A50;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:900;white-space:nowrap}
+.fuente span b{color:var(--fr);font-weight:900}
+.hm4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18)}
+.hm4 b{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:1;color:var(--fy);font-variant-numeric:lining-nums tabular-nums}
+.hm4 small{display:block;font-size:12.5px;font-weight:700;color:#E9DCD3;margin-top:6px;line-height:1.3}
+.hm4 sup{font-size:.55em;font-weight:900;color:var(--fy);margin-left:2px}
+.hm-note{font-size:11.5px;font-weight:700;color:#CDBBB2;margin-top:12px}
+@media (max-width:560px){.hm4{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}}
 </style>
 </head>
 <body>
@@ -1090,7 +1106,7 @@ body.dk .deck{display:block}
     <div><p class="ey">Propuesta a la junta directiva de Frisby S.A. BIC</p>
       <h1>Llevemos la Frispicada a <span>Ciudad de México</span></h1>
       <p class="ld">Pedimos aprobar <b>MXN 8,5 millones</b> para entrar a México con un joint venture 60/40: una tienda piloto y dos cocinas de entrega. A los 12 meses, la tienda debe superar <b>100 tickets diarios</b> y un <b>margen EBITDA de 12 %</b> para pasar a franquicia.</p>
-      <div class="bt"><a class="p1" href="#p-preparacion">Recorrer la propuesta</a><a class="p2" href="#p-finanzas">Ir a la decisión</a></div></div>
+      <div class="bt"><a class="p1" href="#p-preparacion">Recorrer la propuesta</a><a class="p2" href="#p-finanzas">Ir a la decisión</a></div><dl class="hm4"><div><b>3,75</b><small>puntaje de México en la matriz de cinco mercados<sup>1</sup></small></div><div><b>95</b><small>tickets diarios para el equilibrio de la tienda<sup>2</sup></small></div><div><b>13,5 %</b><small>margen EBITDA del escenario base<sup>2</sup></small></div><div><b>8,5</b><small>MXN millones de inversión en tres fases<sup>3</sup></small></div></dl><p class="hm-note">1 Tabla 7 · 2 Tabla 14 · 3 Capítulo 5. Informe final de internacionalización, noviembre de 2026.</p></div>
     <img id="phImg" alt="Combo Familiar de la Frispicada">
   </div></header>
   <nav class="pidx" aria-label="Las siete preguntas">
@@ -1105,7 +1121,7 @@ body.dk .deck{display:block}
   </nav>
 <!-- 1 -->
   <article class="slide" id="p-preparacion" data-t="Preparación de la empresa">
-    <header class="sh"><div><p class="num">01 · Company readiness</p><h2>Parcialmente preparados: el socio cierra las tres brechas</h2><p class="q">¿Por qué la empresa está preparada para ingresar a un mercado internacional?</p></div>
+    <header class="sh"><div><p class="num">01 · Company readiness</p><h2>Parcialmente preparados: el socio cierra las tres brechas</h2><p class="q">¿Por qué la empresa está preparada para ingresar a un mercado internacional?</p><div class="fuente" aria-label="Fuente en el informe final"><span>Informe final</span><span>Tabla <b>1</b></span><span>Tabla <b>2</b></span><span>Cap. 2 y 3</span></div></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Diagnóstico y preparación</span></div></header>
     <div class="g4" data-a>
       <div class="cd kpi"><b data-cnt="281">281</b><span>restaurantes en más de 60 municipios</span></div>
@@ -1123,7 +1139,7 @@ body.dk .deck{display:block}
 
   <!-- 2 -->
   <article class="slide" id="p-mercado" data-t="Selección del mercado">
-    <header class="sh"><div><p class="num">02 · Market selection</p><h2>México: el mejor puntaje de cinco mercados</h2><p class="q">¿Por qué seleccionamos este país? ¿Qué evidencias respaldan la decisión?</p></div>
+    <header class="sh"><div><p class="num">02 · Market selection</p><h2>México: el mejor puntaje de cinco mercados</h2><p class="q">¿Por qué seleccionamos este país? ¿Qué evidencias respaldan la decisión?</p><div class="fuente" aria-label="Fuente en el informe final"><span>Informe final</span><span>Tabla <b>3</b> a <b>7</b></span><span>Figura <b>1</b></span><span>Cap. 4</span></div></div>
       <div class="rub"><span class="chipr">Rúbrica <b>15 %</b> Mercado, PESTEL, cultura y Porter</span></div></header>
     <div class="tabs2" role="tablist" data-tabs="m">
       <button class="on" data-p="m1">Matriz ponderada</button><button data-p="m2">PESTEL</button><button data-p="m3">Cultura</button><button data-p="m4">Cinco fuerzas</button>
@@ -1149,7 +1165,7 @@ body.dk .deck{display:block}
 
   <!-- 3 -->
   <article class="slide" id="p-entrada" data-t="Estrategia de entrada">
-    <header class="sh"><div><p class="num">03 · Entry strategy</p><h2>Joint venture 60/40, por fases</h2><p class="q">¿Cómo ingresar a este mercado? ¿Por qué esta es la mejor opción?</p></div>
+    <header class="sh"><div><p class="num">03 · Entry strategy</p><h2>Joint venture 60/40, por fases</h2><p class="q">¿Cómo ingresar a este mercado? ¿Por qué esta es la mejor opción?</p><div class="fuente" aria-label="Fuente en el informe final"><span>Informe final</span><span>Cap. <b>5</b></span><span>Tabla <b>8</b></span><span>Tabla <b>9</b></span></div></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Estrategia de entrada</span></div></header>
     <div class="mods" id="mods"></div>
     <div class="mdet" id="mdet"></div>
@@ -1168,7 +1184,7 @@ body.dk .deck{display:block}
 
   <!-- 4 -->
   <article class="slide" id="p-valor" data-t="Propuesta de valor local">
-    <header class="sh"><div><p class="num">04 · Local value proposition</p><h2>¿Quién trae la Frispicada?</h2><p class="q">¿Quién es el cliente objetivo? ¿Qué necesidad o problema resolvemos?</p></div>
+    <header class="sh"><div><p class="num">04 · Local value proposition</p><h2>¿Quién trae la Frispicada?</h2><p class="q">¿Quién es el cliente objetivo? ¿Qué necesidad o problema resolvemos?</p><div class="fuente" aria-label="Fuente en el informe final"><span>Informe final</span><span>Cap. <b>6.1</b></span><span>Tabla <b>13</b></span></div></div>
       <div class="rub"><span class="chipr">Base de <b>Mix</b> y <b>Océano azul</b></span></div></header>
     <div class="g2">
       <div class="cd" data-a><div class="pers"><img id="s4img" alt="Combo Familiar de la Frispicada"><div><h3>La banda de 18 a 40 años en CDMX</h3><p class="sub2">Amigos y familias que piden para compartir: el partido, la reunión, el antojo del fin de semana.</p>
@@ -1184,7 +1200,7 @@ body.dk .deck{display:block}
 
   <!-- 5 -->
   <article class="slide" id="p-mix" data-t="Marketing mix">
-    <header class="sh"><div><p class="num">05 · Marketing mix</p><h2>Se mantiene la receta, se adapta la mesa</h2><p class="q">¿Qué elementos están estandarizados, adaptados o combinados? ¿Por qué?</p></div>
+    <header class="sh"><div><p class="num">05 · Marketing mix</p><h2>Se mantiene la receta, se adapta la mesa</h2><p class="q">¿Qué elementos están estandarizados, adaptados o combinados? ¿Por qué?</p><div class="fuente" aria-label="Fuente en el informe final"><span>Informe final</span><span>Tablas <b>9</b> a <b>16</b></span><span>Figura <b>2</b></span><span>Cap. 6</span></div></div>
       <div class="rub"><span class="chipr">Rúbrica <b>15 %</b> Mix y adaptación</span><span class="chipr">Rúbrica <b>15 %</b> Precios y viabilidad</span></div></header>
     <div class="tabs2" id="mixTabs"></div>
     <div class="mx2" id="mixBox" style="margin-top:14px"></div>
@@ -1211,7 +1227,7 @@ body.dk .deck{display:block}
 
   <!-- 6 -->
   <article class="slide" id="p-ventaja" data-t="Ventaja competitiva">
-    <header class="sh"><div><p class="num">06 · Competitive advantage</p><h2>Un espacio propio: la botana de pollo para el grupo</h2><p class="q">¿Por qué los clientes deberían elegirnos frente a competidores locales e internacionales?</p></div>
+    <header class="sh"><div><p class="num">06 · Competitive advantage</p><h2>Un espacio propio: la botana de pollo para el grupo</h2><p class="q">¿Por qué los clientes deberían elegirnos frente a competidores locales e internacionales?</p><div class="fuente" aria-label="Fuente en el informe final"><span>Informe final</span><span>Tabla <b>17</b></span><span>Figura <b>3</b></span><span>Cap. 7</span></div></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Ventaja y Océano azul</span></div></header>
     <div class="g2">
       <div class="cd vc"><h3>Curva de valor</h3><p class="sub2">Toca la leyenda para comparar.</p><div id="vc"></div><div class="lg" id="vcl"></div></div>
@@ -1226,7 +1242,7 @@ body.dk .deck{display:block}
 
   <!-- 7 -->
   <article class="slide" id="p-finanzas" data-t="Riesgos y viabilidad financiera">
-    <header class="sh"><div><p class="num">07 · Risk and financial viability</p><h2>Riesgo acotado, números que cierran</h2><p class="q">¿Qué podría salir mal? ¿Cómo gestionarlo? ¿Cómo medir el éxito?</p></div>
+    <header class="sh"><div><p class="num">07 · Risk and financial viability</p><h2>Riesgo acotado, números que cierran</h2><p class="q">¿Qué podría salir mal? ¿Cómo gestionarlo? ¿Cómo medir el éxito?</p><div class="fuente" aria-label="Fuente en el informe final"><span>Informe final</span><span>Tablas <b>14</b>, <b>18</b>, <b>19</b>, <b>20</b></span><span>Figuras <b>4</b> y <b>7</b></span><span>Anexos C y D</span></div></div>
       <div class="rub"><span class="chipr">Rúbrica <b>10 %</b> Riesgos, plan y KPI</span><span class="chipr">Rúbrica <b>15 %</b> Viabilidad financiera</span></div></header>
     <div class="tabs2" data-tabs="r"><button class="on" data-p="r1">Simulador</button><button data-p="r2">Mapa de riesgos</button><button data-p="r3">KPI</button><button data-p="r4">Estado de resultados</button><button data-p="r5">Sensibilidad</button></div>
     <div class="pane on" data-pane="r1"><div class="g2" style="margin-top:0">
@@ -1552,13 +1568,13 @@ q('#dg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)dg
 const W0=[['Tamaño del mercado',20],['Consumo de pollo',10],['PIB per cápita',10],['Cercanía cultural',15],['Acuerdos con Colombia',10],['Competencia (5 = baja)',10],['Seguridad de la marca',15],['Logística y costos',10]];
 const SC={'México':[5,4,3,4,5,2,3,3],'Perú':[3,5,2,4,5,3,4,4],'EE. UU. hispano':[5,4,5,3,3,1,4,2],'Panamá':[1,4,4,4,2,3,4,4],'España':[4,3,5,3,2,3,1,2]};
 let W=W0.map(w=>w[1]);
-q('#wts').innerHTML=W0.map((w,i)=>`<label>${w[0]}<output id="wo${i}">${w[1]} %</output><input type="range" min="0" max="40" step="5" value="${w[1]}" data-w="${i}" aria-label="Peso de ${w[0]}"></label>`).join('');
+q('#wts').innerHTML=W0.map((w,i)=>`<label>${w[0]}<output id="wo${i}">${w[1]} %</output><input type="range" min="0" max="40" step="5" value="${w[1]}" data-wi="${i}" aria-label="Peso de ${w[0]}"></label>`).join('');
 function rank(){const sum=W.reduce((a,b)=>a+b,0)||1;const T=Object.entries(SC).map(([k,v])=>[k,v.reduce((a,s,i)=>a+s*W[i],0)/sum]).sort((a,b)=>b[1]-a[1]);
   q('#wsum').textContent=sum+' %'+(sum!==100?' (se normaliza)':'');
   const rk=q('#rk');if(!rk.children.length)rk.innerHTML=Object.keys(SC).map(k=>`<div class="r" data-k="${k}"><span>${k}</span><span class="t"><i></i></span><b></b></div>`).join('');
   T.forEach(([k,v],i)=>{const r=rk.querySelector(`[data-k="${k}"]`);r.style.order=i;r.classList.toggle('top',i===0);r.querySelector('i').style.width=(v/5*100)+'%';r.querySelector('b').textContent=nf(v,2)})}
 q('#rk').style.display='flex';q('#rk').style.flexDirection='column';
-q('#wts').addEventListener('input',e=>{const i=+e.target.dataset.w;W[i]=+e.target.value;q('#wo'+i).textContent=W[i]+' %';rank()});
+q('#wts').addEventListener('input',e=>{const i=+e.target.dataset.wi;W[i]=+e.target.value;q('#wo'+i).textContent=W[i]+' %';rank()});
 q('#wreset').addEventListener('click',()=>{W=W0.map(w=>w[1]);qa('#wts input').forEach((x,i)=>{x.value=W[i];q('#wo'+i).textContent=W[i]+' %'});rank()});
 rank();
 const PS=[['P','Político','Revisión del T-MEC en 2026 y tensiones con EE. UU.','Afecta el tipo de cambio, no el consumo de pollo'],['E','Económico','PIB de 1,4 % a 1,6 %; inflación 3,62 %; salario mínimo $315 diarios (+13 %)','Consumidor sensible al precio'],['S','Social','El pollo es el 38,7 % de la proteína animal; 28 % se vende en rosticerías','Compartir pollo ya es un hábito'],['T','Tecnológico','Rappi, DiDi Food y Uber Eats cobran de 25 % a 30 % de comisión','Canal clave pero caro: impulsar WhatsApp'],['A','Ambiental','CDMX restringe plásticos de un solo uso','Empaque compostable'],['L','Legal','Marca por registro en el IMPI; SENASICA limita importar pollo','Registrar la marca y comprar pollo local']];
