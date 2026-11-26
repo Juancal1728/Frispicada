@@ -1102,6 +1102,13 @@ body.dk .pend{display:none}
 .chc ul{color:#FBE4DC}.chc strong{color:var(--fy)}.cha strong{color:var(--fr)}
 .chn{margin-top:14px;font-weight:800;background:var(--gold-soft);border-radius:16px;padding:12px 16px}
 @media (max-width:700px){.chg{grid-template-columns:1fr}}
+
+/* ===== equivalencia en dólares ===== */
+.deck small.usd,.deck .c2c b small.usd,.deck .tbl td small.usd{display:block;font-family:var(--font);font-size:12px;font-weight:800;letter-spacing:0;line-height:1.2;color:var(--muted);margin:4px 0 0;white-space:nowrap;font-variant-numeric:tabular-nums}
+.deck .tbl td small.usd{font-size:11px;font-weight:700}
+.deck .g4 small.usd,.deck .c2c small.usd,.deck .phero small.usd{color:#FBE4DC;opacity:.9}
+.deck .sim .out small.usd{font-size:11px}
+.fxn{font-size:12px;font-weight:700;color:#FBE4DC;margin-top:12px;opacity:.9}
 </style>
 </head>
 <body>
@@ -1347,7 +1354,7 @@ body.dk .pend{display:none}
     <div><p class="ey">Plan de internacionalización · Ciudad de México</p>
       <h1>Llevemos la Frispicada a <span>Ciudad de México</span></h1>
       <p class="ld">Pedimos aprobar <b>MXN 8,5 millones</b> para entrar a México con un joint venture 60/40: una tienda piloto y dos cocinas de entrega. A los 12 meses, la tienda debe superar <b>100 tickets diarios</b> y un <b>margen EBITDA de 12 %</b> para pasar a franquicia.</p>
-      <div class="bt"><a class="p1" href="#p-preparacion">Recorrer la propuesta</a><a class="p2" href="#p-finanzas">Ir a la decisión</a><button class="allx" type="button" id="allx">Abrir todo el análisis</button></div><dl class="hm4"><div><b>3,75</b><small>puntaje de México en la matriz de cinco mercados</small></div><div><b>95</b><small>tickets diarios para el equilibrio de la tienda</small></div><div><b>13,5 %</b><small>margen EBITDA del escenario base</small></div><div><b>8,5</b><small>MXN millones de inversión en tres fases</small></div></dl></div>
+      <div class="bt"><a class="p1" href="#p-preparacion">Recorrer la propuesta</a><a class="p2" href="#p-finanzas">Ir a la decisión</a><button class="allx" type="button" id="allx">Abrir todo el análisis</button></div><dl class="hm4"><div><b>3,75</b><small>puntaje de México en la matriz de cinco mercados</small></div><div><b>95</b><small>tickets diarios para el equilibrio de la tienda</small></div><div><b>13,5 %</b><small>margen EBITDA del escenario base</small></div><div><b>8,5</b><small>MXN millones de inversión en tres fases</small></div></dl><p class="fxn">Valores en pesos mexicanos (MXN) con su equivalente en dólares a MXN 18,55 por USD (tipo de cambio FIX, 13 de noviembre de 2026).</p></div>
     <img id="phImg" alt="Combo Familiar de la Frispicada">
   </div></header>
   <nav class="pidx" aria-label="Las siete preguntas">
@@ -2041,6 +2048,21 @@ document.querySelector('.smxf').addEventListener('click',e=>{const b=e.target.cl
 // el punto entra desde la izquierda al aparecer
 if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const pts=[...L.querySelectorAll('.smt i,.smt em')];const fin=pts.map(p=>p.style.left);pts.forEach(p=>p.style.left='0%');
   const io=new IntersectionObserver(es=>{if(es.some(x=>x.isIntersecting)){pts.forEach((p,k)=>setTimeout(()=>p.style.left=fin[k],60*Math.floor(k/2)));io.disconnect()}},{threshold:.3});io.observe(L)}
+})();
+
+// ===== equivalencia MXN → USD =====
+(()=>{const FX=18.5525;
+const toNum=(n,u)=>{let v=parseFloat(n.replace(/\./g,'').replace(',','.'));if(/^m(il)?$/i.test(u||'')&&u.toLowerCase()==='mil')v*=1e3;else if(u&&/^(M|millones)$/.test(u))v*=1e6;return v};
+const fmt=v=>{const a=Math.abs(v)/FX,sg=v<0?'−':'';if(a>=1e6)return sg+'USD '+(a/1e6).toLocaleString('es-CO',{maximumFractionDigits:2})+' M';if(a>=100)return sg+'USD '+Math.round(a).toLocaleString('es-CO');return sg+'USD '+a.toLocaleString('es-CO',{minimumFractionDigits:2,maximumFractionDigits:2})};
+function usdOf(el){if(el.querySelector('small.usd'))return null;const card=el.closest('.cd,.vfacts>div,.c2c,.hm4>div,tr,.r,.out>div')||el.parentElement;if(card&&/COP/.test(card.textContent))return null;
+  const t=[...el.childNodes].filter(n=>!(n.nodeType===1&&n.matches('small'))).map(n=>n.textContent).join('').trim();if(/USD|%$/.test(t)&&!/\$/.test(t))return null;
+  const out=[];let m;const re=/([−-]?)\$\s?(\d[\d.]*(?:,\d+)?)(?:\s*(M|mil|millones)\b)?/g;while((m=re.exec(t)))out.push((m[1]?-1:1)*toNum(m[2],m[3]));
+  if(!out.length){const mm=t.match(/MXN\s?(\d[\d.]*(?:,\d+)?)\s*(M|millones)?/);if(mm)out.push(toNum(mm[1],mm[2]||'M'))}
+  if(!out.length&&/^\d+(,\d+)?$/.test(t)){const sm=el.parentElement.querySelector('small:not(.usd)');if(sm&&/MXN millones/.test(sm.textContent))out.push(toNum(t,'M'))}
+  if(out.length&&out.every(v=>v===0))return null;return out.length?out.map(fmt).join(' · ').replace(/ · USD /g,' · '):null}
+const SEL='.deck .vfacts b,.deck .hm4 b,.deck .g4 .kpi b,.deck .c2c b,.deck .tbl td:not(:first-child),.deck .sim .out b,.deck .pp2 b,.deck #wf b';
+function run(){document.querySelectorAll(SEL).forEach(el=>{const u=usdOf(el);if(u){const s=document.createElement('small');s.className='usd';s.textContent='≈ '+u;el.appendChild(s)}})}
+run();let tm;new MutationObserver(()=>{clearTimeout(tm);tm=setTimeout(run,60)}).observe(document.querySelector('.deck'),{childList:true,subtree:true,characterData:true});
 })();
 </script>
 </body>
