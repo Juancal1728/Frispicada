@@ -1022,6 +1022,39 @@ body.dk .pend{display:none}
 @media (max-width:1000px){.c2g{grid-template-columns:repeat(2,minmax(0,1fr))}.c2d{grid-template-columns:1fr}}
 @media (max-width:600px){.deck .ask.close2{padding:32px 18px 22px;border-radius:30px}.c2g{gap:10px}.c2c{padding:16px 14px;border-radius:20px}.c2c span{font-size:13px}.c2a{padding:20px;border-radius:24px}.c2gate{grid-template-columns:1fr}.c2p{padding:16px 18px;border-radius:24px}.c2p li{grid-template-columns:70px 1fr}.c2b a{flex:1;justify-content:center}}
 @media (hover:none){.c2c:hover{transform:none}}
+
+/* ===== resumen visual por sección ===== */
+.vis{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;margin-top:26px;align-items:stretch}
+.vimg{position:relative;margin:0;border-radius:32px;background:var(--fr);overflow:hidden;min-height:280px;display:flex;align-items:center;justify-content:center;gap:2%;padding:24px;isolation:isolate}
+.vimg::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(420px 280px at 50% 45%,#C62E36,transparent 70%),radial-gradient(360px 220px at 0% 100%,var(--fr-dd),transparent 70%)}
+.vimg img{max-width:78%;max-height:250px;object-fit:contain;filter:drop-shadow(0 24px 22px rgba(40,5,5,.45));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.vis:hover .vimg img{transform:scale(1.04) rotate(-2deg)}
+.vimg img+img{max-width:46%}
+.vis.many .vimg img{max-width:19%}
+.vimg img[data-vi=map]{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;filter:saturate(.9);z-index:-1}
+.vimg:has(img[data-vi=map])::after{content:"";position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px;border-radius:50%;background:var(--fr);box-shadow:0 0 0 6px rgba(158,27,34,.25),0 0 0 3px #fff inset}
+.vimg figcaption{position:absolute;left:16px;bottom:14px;background:rgba(28,21,20,.78);color:#fff;font-weight:900;font-size:13px;padding:7px 12px;border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vfacts{display:grid;gap:12px}
+.vfacts div{background:var(--panel);border-radius:26px;padding:18px 22px;box-shadow:var(--sh);display:grid;grid-template-columns:minmax(0,auto) 1fr;gap:16px;align-items:center;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.vfacts div:hover{transform:translateX(4px)}
+.vfacts b{font-weight:900;font-size:clamp(24px,2.8vw,36px);color:var(--fr);line-height:1;white-space:nowrap}
+.vfacts span{font-weight:800;color:var(--muted);font-size:15px;line-height:1.3}
+.deck .slide:nth-of-type(even) .vfacts div{background:#fff}
+.more{margin-top:18px}
+.more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--blush-2);font-weight:900;color:var(--ink);transition:background .2s}
+.more>summary::-webkit-details-marker{display:none}
+.more>summary::after{content:"";width:9px;height:9px;border-right:2.5px solid var(--fr);border-bottom:2.5px solid var(--fr);transform:rotate(45deg) translateY(-3px);transition:transform .25s}
+.more[open]>summary::after{transform:rotate(-135deg) translateY(-1px)}
+.more[open]>summary span{font-size:0}.more[open]>summary span::before{content:"Ocultar el análisis";font-size:16px}
+.more>summary:hover{background:var(--gold-soft)}
+.more>summary:focus-visible{outline:3px solid var(--fr);outline-offset:3px}
+.morein>:first-child{margin-top:20px}
+.deck .vis+.ans{margin-top:18px}
+.c2b a{white-space:nowrap}
+.allx{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;font-weight:900;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.45);background:transparent;cursor:pointer}
+@media (max-width:900px){.vis{grid-template-columns:1fr;gap:14px}.vimg{min-height:220px;border-radius:26px}.vimg img{max-height:190px}.vfacts div{padding:14px 16px;border-radius:22px;gap:12px}.vfacts span{font-size:14px}}
+@media (max-width:420px){.vfacts div{grid-template-columns:1fr;gap:4px}}
+@media (hover:none){.vis:hover .vimg img,.vfacts div:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -1267,7 +1300,7 @@ body.dk .pend{display:none}
     <div><p class="ey">Plan de internacionalización · Ciudad de México</p>
       <h1>Llevemos la Frispicada a <span>Ciudad de México</span></h1>
       <p class="ld">Pedimos aprobar <b>MXN 8,5 millones</b> para entrar a México con un joint venture 60/40: una tienda piloto y dos cocinas de entrega. A los 12 meses, la tienda debe superar <b>100 tickets diarios</b> y un <b>margen EBITDA de 12 %</b> para pasar a franquicia.</p>
-      <div class="bt"><a class="p1" href="#p-preparacion">Recorrer la propuesta</a><a class="p2" href="#p-finanzas">Ir a la decisión</a></div><dl class="hm4"><div><b>3,75</b><small>puntaje de México en la matriz de cinco mercados</small></div><div><b>95</b><small>tickets diarios para el equilibrio de la tienda</small></div><div><b>13,5 %</b><small>margen EBITDA del escenario base</small></div><div><b>8,5</b><small>MXN millones de inversión en tres fases</small></div></dl></div>
+      <div class="bt"><a class="p1" href="#p-preparacion">Recorrer la propuesta</a><a class="p2" href="#p-finanzas">Ir a la decisión</a><button class="allx" type="button" id="allx">Abrir todo el análisis</button></div><dl class="hm4"><div><b>3,75</b><small>puntaje de México en la matriz de cinco mercados</small></div><div><b>95</b><small>tickets diarios para el equilibrio de la tienda</small></div><div><b>13,5 %</b><small>margen EBITDA del escenario base</small></div><div><b>8,5</b><small>MXN millones de inversión en tres fases</small></div></dl></div>
     <img id="phImg" alt="Combo Familiar de la Frispicada">
   </div></header>
   <nav class="pidx" aria-label="Las siete preguntas">
@@ -1283,7 +1316,7 @@ body.dk .pend{display:none}
 <!-- 1 -->
   <article class="slide" id="p-preparacion" data-t="Preparación de la empresa">
     <header class="sh"><div><p class="num">01 · Company readiness</p><h2>Parcialmente preparados: el socio cierra las tres brechas</h2><p class="q">¿Por qué la empresa está preparada para ingresar a un mercado internacional?</p></div>
-      </header>
+      </header><div class="vis"><figure class="vimg"><img data-vi="mascota" alt=""><figcaption>Frisby, desde 1977</figcaption></figure><div class="vfacts"><div><b>281</b><span>restaurantes en Colombia</span></div><div><b>$962.236 M</b><span>COP de ingresos en 2024 (+13,8 %)</span></div><div><b>2,6 / 5</b><span>preparación promedio: falta el mercado</span></div></div></div><div class="ans" data-a>Estamos <b>parcialmente preparados</b>: hay músculo financiero, receta estandarizada y operación de domicilio. Falta el mercado, y eso lo resuelve el socio mexicano.</div><details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
     <div class="g4" data-a>
       <div class="cd kpi"><b data-cnt="281">281</b><span>restaurantes en más de 60 municipios</span></div>
       <div class="cd kpi"><b data-cnt="962236" data-pre="$">$962.236</b><span>millones COP de ingresos en 2024 (+13,8 %)</span></div>
@@ -1295,13 +1328,13 @@ body.dk .pend{display:none}
       <div class="cd" data-a><h3>Lo que la detalla</h3><div class="dgd" id="dgd"></div>
         <p class="sub2" style="margin-top:14px">Las tres brechas críticas (marca, experiencia internacional y distribución) se cierran con <b>un socio local y una entrada por fases</b>.</p></div>
     </div>
-    <div class="ans" data-a>Estamos <b>parcialmente preparados</b>: hay músculo financiero, receta estandarizada y operación de domicilio. Falta el mercado, y eso lo resuelve el socio mexicano.</div>
-  </article>
+    
+  </div></details></article>
 
   <!-- 2 -->
   <article class="slide" id="p-mercado" data-t="Selección del mercado">
     <header class="sh"><div><p class="num">02 · Market selection</p><h2>México: el mejor puntaje de cinco mercados</h2><p class="q">¿Por qué seleccionamos este país? ¿Qué evidencias respaldan la decisión?</p></div>
-      </header>
+      </header><div class="vis"><figure class="vimg"><img data-vi="map" alt=""><figcaption>Ciudad de México</figcaption></figure><div class="vfacts"><div><b>130,9 M</b><span>habitantes en México</span></div><div><b>USD 11.530 M</b><span>mercado de comida rápida</span></div><div><b>35,8 kg</b><span>de pollo por persona al año</span></div></div></div><div class="ans">México combina <b>tamaño (USD 11.530 millones en comida rápida)</b>, hábito de pollo (35,8 kg por persona al año), TLC con Colombia y baja distancia cultural. El reto es la rivalidad, y la estrategia está diseñada para eso.</div><details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
     <div class="tabs2" role="tablist" data-tabs="m">
       <button class="on" data-p="m1">Matriz ponderada</button><button data-p="m2">PESTEL</button><button data-p="m3">Cultura</button><button data-p="m4">Cinco fuerzas</button>
     </div>
@@ -1321,13 +1354,13 @@ body.dk .pend{display:none}
       <div class="cd"><h3>Tres hábitos que cambian la receta</h3><div class="ns" style="margin-top:14px"><div><b>Picante</b><p>Espera salsas y chile en casi todo: por eso cinco salsas con escala de picante.</p></div><div><b>Compartir</b><p>Su referencia es el pollo rostizado con tortillas: la caja para el centro de la mesa compite ahí.</p></div><div><b>Precio</b><p>Compara precio por pieza y por persona: se comunica $112 por persona.</p></div></div></div>
     </div></div>
     <div class="pane" data-pane="m4"><div class="prt" id="prt"></div></div>
-    <div class="ans">México combina <b>tamaño (USD 11.530 millones en comida rápida)</b>, hábito de pollo (35,8 kg por persona al año), TLC con Colombia y baja distancia cultural. El reto es la rivalidad, y la estrategia está diseñada para eso.</div>
-  </article>
+    
+  </div></details></article>
 
   <!-- 3 -->
   <article class="slide" id="p-entrada" data-t="Estrategia de entrada">
     <header class="sh"><div><p class="num">03 · Entry strategy</p><h2>Joint venture 60/40, por fases</h2><p class="q">¿Cómo ingresar a este mercado? ¿Por qué esta es la mejor opción?</p></div>
-      </header>
+      </header><div class="vis"><figure class="vimg"><img data-vi="combo-pareja" alt=""><figcaption>Un socio local en CDMX</figcaption></figure><div class="vfacts"><div><b>60/40</b><span>joint venture: Frisby controla</span></div><div><b>MXN 8,5 M</b><span>inversión de la fase 1</span></div><div><b>12 meses</b><span>para decidir la franquicia</span></div></div></div><div class="ans">El socio pone <b>locales, permisos y conocimiento</b>; Frisby pone <b>marca, receta y operación</b>. Así se cierra la brecha de mercado sin arriesgar el 100 % del capital.</div><details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
     <div class="mods" id="mods"></div>
     <div class="mdet" id="mdet"></div>
     <div class="g2">
@@ -1340,13 +1373,13 @@ body.dk .pend{display:none}
       <div class="ns"><div><b>Juan Valdez</b><p>Volvió a México por franquicia en Mérida, sin inversión propia intensiva (Franquiciar Negocio, 2024).</p></div></div>
       <div class="ns"><div><b>Popeyes</b><p>Planea más de 300 tiendas en 10 años con socios franquiciados (Dinero en Imagen, 2025).</p></div></div>
     </div><p class="sub2" style="margin-top:10px">El patrón se repite: las cadenas extranjeras de pollo entran con un operador local que ya tiene locales y permisos.</p></div>
-    <div class="ans">El socio pone <b>locales, permisos y conocimiento</b>; Frisby pone <b>marca, receta y operación</b>. Así se cierra la brecha de mercado sin arriesgar el 100 % del capital.</div>
-  </article>
+    
+  </div></details></article>
 
   <!-- 4 -->
   <article class="slide" id="p-valor" data-t="Propuesta de valor local">
     <header class="sh"><div><p class="num">04 · Local value proposition</p><h2>¿Quién trae la Frispicada?</h2><p class="q">¿Quién es el cliente objetivo? ¿Qué necesidad o problema resolvemos?</p></div>
-      </header>
+      </header><div class="vis"><figure class="vimg"><img data-vi="combo-familiar" alt=""><figcaption>Combo Familiar para 4</figcaption></figure><div class="vfacts"><div><b>$449</b><span>la caja completa</span></div><div><b>$112</b><span>por persona</span></div><div><b>5</b><span>salsas, de suave a muy picante</span></div></div></div><div class="ans">No vendemos pollo: vendemos <b>el plan de compartir</b>. El mismo precio por persona que la competencia, con más variedad en una sola caja.</div><details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
     <div class="g2">
       <div class="cd" data-a><div class="pers"><img id="s4img" alt="Combo Familiar de la Frispicada"><div><h3>La banda de 18 a 40 años en CDMX</h3><p class="sub2">Amigos y familias que piden para compartir: el partido, la reunión, el antojo del fin de semana.</p>
         <ul><li><i>1</i>Piden por apps o WhatsApp, en grupo</li><li><i>2</i>Les gusta el picante, cada quien a su nivel</li><li><i>3</i>Cuidan cuánto pone cada uno</li></ul></div></div></div>
@@ -1356,13 +1389,13 @@ body.dk .pend{display:none}
         <div><b>Promesa</b><p>"La botana crujiente pa' compartir" con la receta Frisby de 1977.</p></div></div></div>
     </div>
     <div class="cd" style="margin-top:20px"><h3>Precio por persona para 4</h3><div class="pp2" id="pp2"></div><p class="src">KFC México, Mexico Current y Menú Precios (2026). Con el lanzamiento de $399 queda en $100.</p></div>
-    <div class="ans">No vendemos pollo: vendemos <b>el plan de compartir</b>. El mismo precio por persona que la competencia, con más variedad en una sola caja.</div>
-  </article>
+    
+  </div></details></article>
 
   <!-- 5 -->
   <article class="slide" id="p-mix" data-t="Marketing mix">
     <header class="sh"><div><p class="num">05 · Marketing mix</p><h2>Se mantiene la receta, se adapta la mesa</h2><p class="q">¿Qué elementos están estandarizados, adaptados o combinados? ¿Por qué?</p></div>
-      </header>
+      </header><div class="vis many"><figure class="vimg"><img data-vi="habanero" alt=""><img data-vi="chipotle" alt=""><img data-vi="tamarindo" alt=""><img data-vi="limon" alt=""><img data-vi="bbq" alt=""><figcaption>Las 5 salsas mexicanas</figcaption></figure><div class="vfacts"><div><b>Se mantiene</b><span>receta, marca y formato</span></div><div><b>Se adapta</b><span>salsas, elote, lenguaje y empaque</span></div><div><b>$449 · $399 · $529</b><span>tienda · lanzamiento · apps</span></div></div></div><div class="ans">Estrategia <b>híbrida</b>: pollo, marca y formato iguales; salsas, elote, lenguaje, empaque y canales a la mexicana. Precio de <b>paridad con más valor</b>.</div><details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
     <div class="tabs2" id="mixTabs"></div>
     <div class="mx2" id="mixBox" style="margin-top:14px"></div>
     <div class="tally" id="tally"></div>
@@ -1383,13 +1416,13 @@ body.dk .pend{display:none}
     <div class="cd" style="margin-top:20px"><h3>Cadena de precio del Combo Familiar</h3><p class="sub2">Elige el canal y mira a dónde va cada peso.</p>
       <div class="seg" id="chSeg"><button class="on" data-c="t">Tienda y WhatsApp · $449</button><button data-c="l">Lanzamiento · $399</button><button data-c="a">Apps · $529</button></div>
       <div class="wf" id="wf"></div><p class="src">Costo unitario $144 (pollo a $40,50/kg, Profeco); comisión de apps 30 % (PoloTab, 2026); IVA 16 %.</p></div>
-    <div class="ans">Estrategia <b>híbrida</b>: pollo, marca y formato iguales; salsas, elote, lenguaje, empaque y canales a la mexicana. Precio de <b>paridad con más valor</b>.</div>
-  </article>
+    
+  </div></details></article>
 
   <!-- 6 -->
   <article class="slide" id="p-ventaja" data-t="Ventaja competitiva">
     <header class="sh"><div><p class="num">06 · Competitive advantage</p><h2>Un espacio propio: la botana de pollo para el grupo</h2><p class="q">¿Por qué los clientes deberían elegirnos frente a competidores locales e internacionales?</p></div>
-      </header>
+      </header><div class="vis"><figure class="vimg"><img data-vi="alitas" alt=""><img data-vi="elotes" alt=""><figcaption>Alitas Mexa y elotes</figcaption></figure><div class="vfacts"><div><b>Formato</b><span>una caja para el grupo</span></div><div><b>Picante</b><span>5 niveles a la medida</span></div><div><b>Historia</b><span>la receta Frisby de 1977</span></div></div></div><div class="ans">No ganamos en cobertura ni en reconocimiento, donde KFC es imbatible: ganamos en <b>formato, variedad, picante e historia</b>, que se apoyan en una receta que nadie más tiene.</div><details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
     <div class="g2">
       <div class="cd vc"><h3>Curva de valor</h3><p class="sub2">Toca la leyenda para comparar.</p><div id="vc"></div><div class="lg" id="vcl"></div></div>
       <div class="cd"><h3>Matriz ERRC</h3><div class="errc" style="margin-top:12px">
@@ -1398,13 +1431,13 @@ body.dk .pend{display:none}
         <div class="e3"><h4>Incrementar</h4><p>Salsas mexicanas, porciones para compartir y canal propio</p></div>
         <div class="e4"><h4>Crear</h4><p>La Frispicada como ritual de grupo, 5 niveles de picante y la historia "del Eje Cafetero a tu mesa"</p></div></div></div>
     </div>
-    <div class="ans">No ganamos en cobertura ni en reconocimiento, donde KFC es imbatible: ganamos en <b>formato, variedad, picante e historia</b>, que se apoyan en una receta que nadie más tiene.</div>
-  </article>
+    
+  </div></details></article>
 
   <!-- 7 -->
   <article class="slide" id="p-finanzas" data-t="Riesgos y viabilidad financiera">
     <header class="sh"><div><p class="num">07 · Risk and financial viability</p><h2>Riesgo acotado, números que cierran</h2><p class="q">¿Qué podría salir mal? ¿Cómo gestionarlo? ¿Cómo medir el éxito?</p></div>
-      </header>
+      </header><div class="vis"><figure class="vimg"><img data-vi="tenders" alt=""><figcaption>La tienda piloto</figcaption></figure><div class="vfacts"><div><b>95</b><span>tickets diarios para el equilibrio</span></div><div><b>13,5 %</b><span>margen EBITDA en el escenario base</span></div><div><b>62,8 %</b><span>margen de contribución del combo</span></div></div></div><details class="more"><summary><span>Ver el análisis completo</span></summary><div class="morein">
     <div class="tabs2" data-tabs="r"><button class="on" data-p="r1">Simulador</button><button data-p="r2">Mapa de riesgos</button><button data-p="r3">KPI</button><button data-p="r4">Estado de resultados</button><button data-p="r5">Sensibilidad</button></div>
     <div class="pane on" data-pane="r1"><div class="g2" style="margin-top:0">
       <div class="cd sim"><h3>Tienda piloto: mueve las ventas</h3><label for="tk">Tickets diarios <output id="tkO">130</output></label><input type="range" id="tk" min="60" max="200" step="1" value="130"><div class="ticks"><span>60</span><span>Pesimista 100</span><span>Base 130</span><span>Optimista 160</span><span>200</span></div>
@@ -1451,7 +1484,7 @@ body.dk .pend{display:none}
         <div><b>Combinado</b><p>Pollo +20 % y ticket −10 % a la vez dejan el margen en 5,9 %: rentable, con poco colchón.</p></div></div>
         <p class="src">El alza del pollo se aplica sobre el 51 % del costo de alimentos.</p></div>
     </div></div>
-    <div class="ask close2" id="p-decision">
+    </div></details><div class="ask close2" id="p-decision">
       <div class="c2h"><span class="c2k">La decisión</span><h3>¿Por qué deberíamos invertir?</h3><p>Porque el riesgo está acotado y el aprendizaje es grande.</p></div>
       <div class="c2g">
         <div class="c2c"><b>3,75<small>/5</small></b><span>México es el mercado con mejor evidencia de los cinco que evaluamos.</span></div>
@@ -1928,6 +1961,17 @@ function scen(){const S=[[100,'Pesimista'],[130,'Base'],[160,'Optimista']];const
     svg+=`<text class="lbm" x="${x+w/2}" y="${H-B+16}" text-anchor="middle">${n}</text><text class="lbm" x="${x+w/2}" y="${H-B+30}" text-anchor="middle">${t} tickets</text>`});
   q('#scen').innerHTML=svg+'</svg>'}
 const drawAll=()=>{wfall(WT);scen()};let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(drawAll,150)});document.addEventListener('click',e=>{if(e.target.closest('[data-tabs=r] button'))setTimeout(drawAll,30)});drawAll();
+})();
+
+// ===== resumen visual y análisis desplegable =====
+(()=>{const mp=document.querySelector('.mapbox .mimg');
+document.querySelectorAll('img[data-vi]').forEach(i=>{const k=i.dataset.vi;i.src=k==='map'?(mp?mp.src:''):IMG[k]});
+const ds=[...document.querySelectorAll('details.more')];const bt=document.getElementById('allx');
+const sync=()=>{const all=ds.every(d=>d.open);bt.textContent=all?'Cerrar el análisis':'Abrir todo el análisis'};
+bt.addEventListener('click',()=>{const o=!ds.every(d=>d.open);ds.forEach(d=>d.open=o);sync()});
+ds.forEach(d=>d.addEventListener('toggle',()=>{sync();if(d.open){setTimeout(()=>dispatchEvent(new Event('resize')),40);const s=d.closest('.slide');s&&s.querySelectorAll('[data-w]').forEach(i=>{i.style.width=i.dataset.w+'%'})}}));
+// si un enlace lleva a algo dentro de un análisis cerrado, ábrelo
+addEventListener('hashchange',()=>{const t=document.getElementById(location.hash.slice(1));const d=t&&t.closest&&t.closest('details.more');if(d)d.open=true});
 })();
 </script>
 </body>
