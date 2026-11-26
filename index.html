@@ -877,6 +877,21 @@ body.dk .deck{display:block}
   .pbar .pnav a:focus-visible{outline:3px solid var(--fy);outline-offset:2px}
   .slide{scroll-margin-top:84px}
 }
+
+/* ===== cascada y escenarios ===== */
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart text{font-family:Nunito,system-ui,sans-serif}
+.chart .ax{fill:var(--muted);font-size:11px;font-weight:800}
+.chart .gl{stroke:#EADFD2;stroke-width:1}
+.chart .lb{fill:var(--ink);font-size:12px;font-weight:900}
+.chart .lbm{fill:var(--muted);font-size:11px;font-weight:800}
+.chart [data-tip]{cursor:pointer;transition:opacity .2s}
+.chart:hover [data-tip]{opacity:.55}.chart [data-tip]:hover{opacity:1}
+.ctip{position:fixed;z-index:120;pointer-events:none;background:var(--line);color:#FFFDF8;font-weight:800;font-size:13px;padding:8px 11px;border-radius:10px;box-shadow:0 12px 24px -10px rgba(0,0,0,.6);opacity:0;transform:translate(-50%,calc(-100% - 12px));transition:opacity .12s;white-space:nowrap}
+.ctip b{color:var(--fy)}
+.ctip.on{opacity:1}
+.cleg{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12.5px;font-weight:800;color:var(--muted)}
+.cleg span{display:inline-flex;align-items:center;gap:6px}.cleg i{width:12px;height:12px;border-radius:3px;display:inline-block}
 </style>
 </head>
 <body>
@@ -1291,7 +1306,13 @@ body.dk .deck{display:block}
         <tr><td>ROAS de la campaña<small>marketing</small></td><td>Ventas por peso invertido en medios</td><td>Ventas atribuidas ÷ inversión en medios</td><td>≥ 3</td></tr>
       </tbody></table></div>
       <p class="src">Umbral de 12 %: rango del sector de 10 % a 15 % (OlaClick, 2026). ROAS: estimación del equipo para una marca nueva.</p></div></div>
-    <div class="pane" data-pane="r4"><div class="cd"><h3>Estado de resultados mensual por escenario</h3><p class="sub2">MXN sin IVA. Tabla 14 del informe final. Tickets diarios × $300 con IVA × 30 días.</p>
+    <div class="pane" data-pane="r4"><div class="g2" style="margin-top:0;margin-bottom:20px">
+      <div class="cd"><h3>De las ventas al EBITDA</h3><p class="sub2">Mes típico de la tienda piloto, en miles de MXN sin IVA. Elige el escenario y pasa el cursor por cada barra.</p>
+        <div class="seg" id="scSeg"><button data-t="100">Pesimista · 100</button><button class="on" data-t="130">Base · 130</button><button data-t="160">Optimista · 160</button></div>
+        <div id="wfall" style="margin-top:12px"></div></div>
+      <div class="cd"><h3>EBITDA y margen por escenario</h3><p class="sub2">Tickets diarios de $300 con IVA · Tabla 14 y Figura 2 del informe final.</p><div id="scen" style="margin-top:12px"></div>
+        <p class="sub2" style="margin-top:8px">El equilibrio está en <b>95 tickets diarios</b>: por debajo, la tienda pierde.</p></div>
+    </div><div class="cd"><h3>Estado de resultados mensual por escenario</h3><p class="sub2">MXN sin IVA. Tabla 14 del informe final. Tickets diarios × $300 con IVA × 30 días.</p>
       <div class="tbl-wrap" style="margin-top:12px"><table class="tbl"><thead><tr><th>Concepto</th><th>Pesimista (100)</th><th>Base (130)</th><th>Optimista (160)</th></tr></thead><tbody>
         <tr><td>Ventas con IVA</td><td>$900.000</td><td>$1.170.000</td><td>$1.440.000</td></tr>
         <tr><td>Ventas netas</td><td>$775.862</td><td>$1.008.621</td><td>$1.241.379</td></tr>
@@ -1730,6 +1751,38 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.fo
 const b1=q('#bdg'),b2=q('#bdg2');if(b1&&b2)new MutationObserver(()=>{b2.textContent=b1.textContent}).observe(b1,{childList:true,characterData:true,subtree:true});
 addEventListener('hashchange',()=>go(location.hash.slice(1)||'inicio',false));
 const h0=location.hash.slice(1);if(h0)go(h0,false);else setView('menu');
+})();
+// ===== v9: gráficos del informe =====
+(()=>{
+const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];
+const nf=(v,d=0)=>v.toLocaleString('es-CO',{minimumFractionDigits:d,maximumFractionDigits:d});
+const tip=document.createElement('div');tip.className='ctip';document.body.appendChild(tip);
+document.addEventListener('pointerover',e=>{const t=e.target.closest('[data-tip]');if(!t){tip.classList.remove('on');return}tip.innerHTML=t.dataset.tip;tip.classList.add('on')});
+document.addEventListener('pointermove',e=>{if(tip.classList.contains('on')){tip.style.left=e.clientX+'px';tip.style.top=e.clientY+'px'}});
+document.addEventListener('pointerout',e=>{if(!e.relatedTarget||!e.relatedTarget.closest||!e.relatedTarget.closest('[data-tip]'))tip.classList.remove('on')});
+// estado de resultados (Tabla 14): cascada
+const F=363251;const PL=t=>{const net=t*300*30/1.16;return {net,food:net*.35,apps:net*.35*.30,roy:net*.05,F,e:net*(1-.505)-F}};
+function wfall(t){WT=t;const p=PL(t);const k=v=>v/1000;const W=Math.max(300,q('#wfall').clientWidth||560),H=250,L=4,R=4,T=22,B=34;const mx=k(PL(160).net)*1.02;
+  const steps=[['Ventas netas',p.net,'tot'],['Alimentos y empaque (35 %)',-p.food],['Comisión de apps',-p.apps],['Regalía (5 %)',-p.roy],['Costos fijos',-p.F],['EBITDA',p.e,'res']];
+  const bw=(W-L-R)/steps.length;const y=v=>T+(H-T-B)*(1-v/mx);let run=0,svg=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Cascada del estado de resultados con ${t} tickets diarios">`;
+  [0,250,500,750,1000,1250].forEach(g=>{if(g<=mx)svg+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${y(g)}" y2="${y(g)}"/>`});const SH=['Ventas','Alimentos','Apps','Regalía','Fijos','EBITDA'];
+  steps.forEach((st,i)=>{const v=k(st[1]);let a,b,fill;if(st[2]==='tot'){a=0;b=v;run=v;fill='#1C1514'}else if(st[2]==='res'){a=0;b=v;fill=v>=0?'#9E1B22':'#B3202A'}else{a=run+v;b=run;run=a;fill='#C9B5A6'}
+    const x=L+i*bw+bw*.16,w=bw*.68,y1=y(Math.max(a,b)),y2=y(Math.min(a,b));
+    svg+=`<rect x="${x}" y="${y1}" width="${w}" height="${Math.max(2,y2-y1)}" rx="4" fill="${fill}" data-tip="<b>${st[0]}</b><br>$${nf(Math.abs(st[1]))}${st[2]==='res'?' · margen '+nf(st[1]/p.net*100,1)+' %':''}"/>`;
+    svg+=`<text class="lb" x="${x+w/2}" y="${y1-5}" text-anchor="middle">${st[1]<0?'−':''}${nf(Math.abs(v))}</text>`;
+    svg+=`<text class="lbm" x="${x+w/2}" y="${H-B+18}" text-anchor="middle">${SH[i]}</text>`;
+    if(i<steps.length-1&&st[2]!=='res')svg+=`<line x1="${x+w}" x2="${x+bw}" y1="${y(run)}" y2="${y(run)}" stroke="#B9A79C" stroke-dasharray="3 3"/>`});
+  q('#wfall').innerHTML=svg+'</svg>'}let WT=130;
+q('#scSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;qa('#scSeg button').forEach(x=>x.classList.toggle('on',x===b));wfall(+b.dataset.t)});
+// escenarios
+function scen(){const S=[[100,'Pesimista'],[130,'Base'],[160,'Optimista']];const W=Math.max(300,q('#scen').clientWidth||420),H=240,T=34,B=40,L=4,R=4;const mx=260;const y=v=>T+(H-T-B)*(1-v/mx);let svg=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="EBITDA mensual por escenario">`;
+  [0,100,200].forEach(g=>{svg+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${y(g)}" y2="${y(g)}"/>`});
+  const bw=(W-L-R)/3;S.forEach(([t,n],i)=>{const p=PL(t);const v=p.e/1000;const x=L+i*bw+bw*.25,w=bw*.5;
+    svg+=`<rect x="${x}" y="${y(v)}" width="${w}" height="${y(0)-y(v)}" rx="4" fill="${t===130?'#9E1B22':'#D9A3A6'}" data-tip="<b>${n} · ${t} tickets</b><br>EBITDA $${nf(p.e)} · margen ${nf(p.e/p.net*100,1)} %"/>`;
+    svg+=`<text class="lb" x="${x+w/2}" y="${y(v)-16}" text-anchor="middle">$${nf(v)} mil</text><text class="lbm" x="${x+w/2}" y="${y(v)-4}" text-anchor="middle">${nf(p.e/p.net*100,1)} %</text>`;
+    svg+=`<text class="lbm" x="${x+w/2}" y="${H-B+16}" text-anchor="middle">${n}</text><text class="lbm" x="${x+w/2}" y="${H-B+30}" text-anchor="middle">${t} tickets</text>`});
+  q('#scen').innerHTML=svg+'</svg>'}
+const drawAll=()=>{wfall(WT);scen()};let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(drawAll,150)});document.addEventListener('click',e=>{if(e.target.closest('[data-tabs=r] button'))setTimeout(drawAll,30)});drawAll();
 })();
 </script>
 </body>
